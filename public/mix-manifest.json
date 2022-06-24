@@ -1,0 +1,13 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/js/Student/categories.js": "/js/Student/categories.js",
+    "/js/Student/LearnSession.js": "/js/Student/LearnSession.js",
+    "/js/ChatRoom/room.js": "/js/ChatRoom/room.js",
+    "/js/ChatRoom/room_rtc.js": "/js/ChatRoom/room_rtc.js",
+    "/js/Courses/courses.js": "/js/Courses/courses.js",
+    "/js/Courses/course_details.js": "/js/Courses/course_details.js",
+    "/css/Categories/coursesList.css": "/css/Categories/coursesList.css",
+    "/css/ChatRoom/main.css": "/css/ChatRoom/main.css",
+    "/css/app.css": "/css/app.css",
+    "/css/ChatRoom/room.css": "/css/ChatRoom/room.css"
+}

@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
 
 class CreateCategoriesTable extends Migration
 {
@@ -15,11 +17,9 @@ class CreateCategoriesTable extends Migration
         // Create table for storing categories
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('parent_id')->unsigned()->nullable()->default(null);
-            $table->foreign('parent_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('set null');
-            $table->integer('order')->default(1);
-            $table->string('name');
-            $table->string('slug')->unique();
+            $table->string('name')->nullable(false);
+            $table->string('description')->nullable(false);
+            $table->integer("num_of_courses")->default(0);
             $table->timestamps();
         });
     }
