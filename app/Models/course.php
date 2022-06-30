@@ -11,7 +11,7 @@ class course extends Model
     protected $table='course';
 
     public function getTeacher(){
-        return $this->hasOne(teacher::class,"id","category_id")->first();
+        return $this->hasOne(teacher::class,"id","teacher_id")->first();
     }
 
     public function getCategory(){

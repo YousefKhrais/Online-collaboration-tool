@@ -3,7 +3,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -32,6 +31,24 @@ Route::get('/courses/getCourseDetails', [
     \App\Http\Controllers\Courses\CoursesController::class,"getCourseDetails"
 ]);
 
+//student api
+
+Route::get("student/fetchStudent",[
+    \App\Http\Controllers\Student\ProfileController::class,"fetchStudent"
+]);
+
+Route::get("student/fetchStudentSocialMedia",[
+    \App\Http\Controllers\Student\ProfileController::class,"fetchStudentSocialMedia"
+]);
+
+//teacher api
+Route::get("teacher/fetchTeacher",[
+    \App\Http\Controllers\Teacher\TeacherProfileController::class,"fetchTeacher"
+]);
 
 
+
+Route::get("teacher/fetchTeacherSocialMedia",[
+    \App\Http\Controllers\Teacher\TeacherProfileController::class,"fetchTeacherSocialMedia"
+]);
 

@@ -80,4 +80,4 @@ for(let i =0; videoFrames.length>i;i++){
 
 displayFrame.addEventListener("click",hideDisplayFrame);
 
-export {expandVideoFrame,hideDisplayFrame,displayFrame,videoFrames};
+export {expandVideoFrame,hideDisplayFrame,displayFrame,videoFrames,userIDInDisplayFrame};

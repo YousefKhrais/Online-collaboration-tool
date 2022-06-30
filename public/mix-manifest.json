@@ -6,8 +6,14 @@
     "/js/ChatRoom/room_rtc.js": "/js/ChatRoom/room_rtc.js",
     "/js/Courses/courses.js": "/js/Courses/courses.js",
     "/js/Courses/course_details.js": "/js/Courses/course_details.js",
+    "/js/Student/StudentProfile.js": "/js/Student/StudentProfile.js",
+    "/js/Student/editProfile.js": "/js/Student/editProfile.js",
+    "/js/Teacher/TeacherProfile.js": "/js/Teacher/TeacherProfile.js",
+    "/js/Teacher/EditProfile.js": "/js/Teacher/EditProfile.js",
     "/css/Categories/coursesList.css": "/css/Categories/coursesList.css",
     "/css/ChatRoom/main.css": "/css/ChatRoom/main.css",
     "/css/app.css": "/css/app.css",
-    "/css/ChatRoom/room.css": "/css/ChatRoom/room.css"
+    "/css/ChatRoom/room.css": "/css/ChatRoom/room.css",
+    "/css/Student/editProfile.css": "/css/Student/editProfile.css",
+    "/css/Student/loginPage.css": "/css/Student/loginPage.css"
 }

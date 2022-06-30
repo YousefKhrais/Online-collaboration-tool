@@ -16,9 +16,11 @@ return new class extends Migration
         Schema::create('student', function (Blueprint $table) {
             $table->increments("id");
             $table->string("name");
-            $table->string("description");
-            $table->string("profile_pic");
-
+            $table->string("email")->unique();
+            $table->string("description")->nullable(true);
+            $table->string("profile_pic")->nullable(true);
+            $table->string("password");
+            $table->rememberToken();
             $table->timestamps();
         });
     }

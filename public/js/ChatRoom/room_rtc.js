@@ -54,6 +54,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "displayFrame": () => (/* binding */ displayFrame),
 /* harmony export */   "expandVideoFrame": () => (/* binding */ expandVideoFrame),
 /* harmony export */   "hideDisplayFrame": () => (/* binding */ hideDisplayFrame),
+/* harmony export */   "userIDInDisplayFrame": () => (/* binding */ userIDInDisplayFrame),
 /* harmony export */   "videoFrames": () => (/* binding */ videoFrames)
 /* harmony export */ });
 // let messagesContainer = document.getElementById('messages');
@@ -446,6 +447,8 @@ if (!roomID) {
 
 var localTracks = [];
 var remoteUsers = {};
+var localScreenTracks;
+var sharingScreen = false;
 
 var joinRoomInit = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -584,7 +587,7 @@ var handleUserLeft = /*#__PURE__*/function () {
             delete remoteUsers[user.uid];
             document.getElementById("user-container-".concat(user.uid)).remove();
 
-            if (userIDInDisplayFrame === "user-container-".concat(user.uid)) {
+            if (_room__WEBPACK_IMPORTED_MODULE_1__.userIDInDisplayFrame === "user-container-".concat(user.uid)) {
               _room__WEBPACK_IMPORTED_MODULE_1__.displayFrame.style.display = null;
               _videoFrames = document.getElementsByClassName("video__container");
 
@@ -691,8 +694,61 @@ var ToggleMic = /*#__PURE__*/function () {
   };
 }();
 
+var ToggleScreen = /*#__PURE__*/function () {
+  var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(e) {
+    var screenButton, cameraButton, player;
+    return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+      while (1) {
+        switch (_context7.prev = _context7.next) {
+          case 0:
+            screenButton = e.currentTarget;
+            cameraButton = document.getElementById("camera-btn");
+
+            if (sharingScreen) {
+              _context7.next = 18;
+              break;
+            }
+
+            sharingScreen = true;
+            screenButton.classList.add("active");
+            cameraButton.classList.remove("active");
+            cameraButton.style.display = 'none';
+            _context7.next = 9;
+            return agora_rtc_sdk_ng__WEBPACK_IMPORTED_MODULE_0___default().createScreenVideoTrack();
+
+          case 9:
+            localScreenTracks = _context7.sent;
+            document.getElementById("user-container-".concat(uid)).remove();
+            _room__WEBPACK_IMPORTED_MODULE_1__.displayFrame.style.display = 'block'; //
+
+            player = "\n               <div class=\"video__container\" id=\"user-container-".concat(uid, "\">\n                              <div class=\"video-player\" id=\"user-").concat(uid, "\" >\n\n                                </div>\n                </div>\n");
+            _room__WEBPACK_IMPORTED_MODULE_1__.displayFrame.insertAdjacentHTML("beforeend", player);
+            document.getElementById("user-container-".concat(uid)).addEventListener("click", _room__WEBPACK_IMPORTED_MODULE_1__.expandVideoFrame); // userIDInDisplayFrame  = `user-container-${uid}`;
+
+            localScreenTracks.play("user-".concat(uid));
+            _context7.next = 20;
+            break;
+
+          case 18:
+            sharingScreen = false;
+            cameraButton.style.display = 'block';
+
+          case 20:
+          case "end":
+            return _context7.stop();
+        }
+      }
+    }, _callee7);
+  }));
+
+  return function ToggleScreen(_x6) {
+    return _ref7.apply(this, arguments);
+  };
+}();
+
 document.getElementById("camera-btn").addEventListener("click", ToggleCamera);
 document.getElementById("mic-btn").addEventListener("click", ToggleMic);
+document.getElementById("screen-btn").addEventListener("click", ToggleScreen);
 joinRoomInit();
 })();
 

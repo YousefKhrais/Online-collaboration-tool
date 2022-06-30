@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 use PhpParser\Node\Expr\Array_;
 
 /**
@@ -26,6 +27,12 @@ class teacherFactory extends Factory
             'twitter'=>$this->faker->randomElement([null,"https://www.twitter.com"]),
             'instagram'=>$this->faker->randomElement([null,"https://www.instagram.com"]),
             'linkedin'=>$this->faker->randomElement([null,"https://www.linkedin.com"]),
+            'email' => $this->faker->unique()->safeEmail(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => Str::random(10),
+            'phone'=>$this->faker->phoneNumber(),
+            'mobile'=>$this->faker->phoneNumber(),
+
         ];
     }
 

@@ -27,6 +27,10 @@ class RedirectIfAuthenticated
             }
         }
 
+//        if(!Auth::guard("student")->check()){
+//           return redirect(RouteServiceProvider::HOME);
+//        }
+
         return $next($request);
     }
 }

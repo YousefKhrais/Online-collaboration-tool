@@ -323,7 +323,7 @@
 
 </body>
 
-{{--<script type="text/javascript" src="{{mix('js/ChatRoom/AgoraRTC_N-4.12.0.js')}}"></script>--}}
+
 <script type="text/javascript" src="{{mix('js/ChatRoom/room.js')}}"></script>
 
 <script type="module" src="{{mix('js/ChatRoom/room_rtc.js')}}"></script>

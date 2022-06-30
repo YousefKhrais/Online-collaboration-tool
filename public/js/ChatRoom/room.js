@@ -42,6 +42,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "displayFrame": () => (/* binding */ displayFrame),
 /* harmony export */   "expandVideoFrame": () => (/* binding */ expandVideoFrame),
 /* harmony export */   "hideDisplayFrame": () => (/* binding */ hideDisplayFrame),
+/* harmony export */   "userIDInDisplayFrame": () => (/* binding */ userIDInDisplayFrame),
 /* harmony export */   "videoFrames": () => (/* binding */ videoFrames)
 /* harmony export */ });
 // let messagesContainer = document.getElementById('messages');

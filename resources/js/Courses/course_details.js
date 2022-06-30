@@ -8,6 +8,7 @@ const app = new Vue({
         course:{},
         course_id:1,
     },
+
     methods:{
         getCourseDetails(){
             axios.get("/api/courses/getCourseDetails",{params:{  course_id:this.course_id } })
@@ -29,6 +30,5 @@ const app = new Vue({
     }
 
 });
-
 
 

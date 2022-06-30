@@ -48,7 +48,10 @@
                                 </div>
 
                             </div>
-                            <a href="#" class="btn btn-success btn-sm">View Details</a>
+
+                            <a type="submit"  class="btn  btn-sm btn-link">
+                                View Details
+                            </a>
 
                         </div>
                     </div>
