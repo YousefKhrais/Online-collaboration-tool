@@ -42,7 +42,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "displayFrame": () => (/* binding */ displayFrame),
 /* harmony export */   "expandVideoFrame": () => (/* binding */ expandVideoFrame),
 /* harmony export */   "hideDisplayFrame": () => (/* binding */ hideDisplayFrame),
-/* harmony export */   "userIDInDisplayFrame": () => (/* binding */ userIDInDisplayFrame),
+/* harmony export */   "setUserID_Display_Frame": () => (/* binding */ setUserID_Display_Frame),
 /* harmony export */   "videoFrames": () => (/* binding */ videoFrames)
 /* harmony export */ });
 // let messagesContainer = document.getElementById('messages');
@@ -112,6 +112,10 @@ var hideDisplayFrame = function hideDisplayFrame() {
 for (var i = 0; videoFrames.length > i; i++) {
   videoFrames[i].addEventListener('click', expandVideoFrame);
 }
+
+var setUserID_Display_Frame = function setUserID_Display_Frame(value) {
+  userIDInDisplayFrame = value;
+};
 
 displayFrame.addEventListener("click", hideDisplayFrame);
 

@@ -1,6 +1,6 @@
 
 import AgoraRTC from "agora-rtc-sdk-ng";
-import {expandVideoFrame,hideDisplayFrame,displayFrame,videoFrames,userIDInDisplayFrame} from "./room";
+import {expandVideoFrame,hideDisplayFrame,displayFrame,videoFrames,setUserID_Display_Frame} from "./room";
 const   APP_ID="18c455e4f5e84408b1fb8758fa0c1585";
 //store id in session storage
 let uid = sessionStorage.getItem("uid");
@@ -140,9 +140,6 @@ let ToggleMic= async (e)=>{
 
 }
 
-
-
-
 let ToggleScreen= async (e)=>{
     let screenButton = e.currentTarget;
     let cameraButton = document.getElementById("camera-btn");
@@ -159,9 +156,7 @@ let ToggleScreen= async (e)=>{
         document.getElementById(`user-container-${uid}`).remove();
         displayFrame.style.display  ='block';
 
-
         //
-
         let  player =`
                <div class="video__container" id="user-container-${uid}">
                               <div class="video-player" id="user-${uid}" >
@@ -173,23 +168,18 @@ let ToggleScreen= async (e)=>{
         displayFrame.insertAdjacentHTML("beforeend",player);
         document.getElementById(`user-container-${uid}`).addEventListener("click",expandVideoFrame);
         // userIDInDisplayFrame  = `user-container-${uid}`;
-
+        setUserID_Display_Frame(`user-container-${uid}`);
         localScreenTracks.play(`user-${uid}`);
 
         await  client.unpublish([localTracks[1]]);
         await  client.publish([localScreenTracks]);
 
-
     }else{
         sharingScreen = false;
         cameraButton.style.display='block';
-
     }
 
 }
-
-
-
 
 document.getElementById("camera-btn").addEventListener("click",ToggleCamera);
 document.getElementById("mic-btn").addEventListener("click",ToggleMic);

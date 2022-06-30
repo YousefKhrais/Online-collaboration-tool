@@ -54,7 +54,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "displayFrame": () => (/* binding */ displayFrame),
 /* harmony export */   "expandVideoFrame": () => (/* binding */ expandVideoFrame),
 /* harmony export */   "hideDisplayFrame": () => (/* binding */ hideDisplayFrame),
-/* harmony export */   "userIDInDisplayFrame": () => (/* binding */ userIDInDisplayFrame),
+/* harmony export */   "setUserID_Display_Frame": () => (/* binding */ setUserID_Display_Frame),
 /* harmony export */   "videoFrames": () => (/* binding */ videoFrames)
 /* harmony export */ });
 // let messagesContainer = document.getElementById('messages');
@@ -124,6 +124,10 @@ var hideDisplayFrame = function hideDisplayFrame() {
 for (var i = 0; videoFrames.length > i; i++) {
   videoFrames[i].addEventListener('click', expandVideoFrame);
 }
+
+var setUserID_Display_Frame = function setUserID_Display_Frame(value) {
+  userIDInDisplayFrame = value;
+};
 
 displayFrame.addEventListener("click", hideDisplayFrame);
 
@@ -587,7 +591,7 @@ var handleUserLeft = /*#__PURE__*/function () {
             delete remoteUsers[user.uid];
             document.getElementById("user-container-".concat(user.uid)).remove();
 
-            if (_room__WEBPACK_IMPORTED_MODULE_1__.userIDInDisplayFrame === "user-container-".concat(user.uid)) {
+            if (userIDInDisplayFrame === "user-container-".concat(user.uid)) {
               _room__WEBPACK_IMPORTED_MODULE_1__.displayFrame.style.display = null;
               _videoFrames = document.getElementsByClassName("video__container");
 
@@ -705,7 +709,7 @@ var ToggleScreen = /*#__PURE__*/function () {
             cameraButton = document.getElementById("camera-btn");
 
             if (sharingScreen) {
-              _context7.next = 18;
+              _context7.next = 23;
               break;
             }
 
@@ -725,15 +729,24 @@ var ToggleScreen = /*#__PURE__*/function () {
             _room__WEBPACK_IMPORTED_MODULE_1__.displayFrame.insertAdjacentHTML("beforeend", player);
             document.getElementById("user-container-".concat(uid)).addEventListener("click", _room__WEBPACK_IMPORTED_MODULE_1__.expandVideoFrame); // userIDInDisplayFrame  = `user-container-${uid}`;
 
+            (0,_room__WEBPACK_IMPORTED_MODULE_1__.setUserID_Display_Frame)("user-container-".concat(uid));
             localScreenTracks.play("user-".concat(uid));
-            _context7.next = 20;
+            _context7.next = 19;
+            return client.unpublish([localTracks[1]]);
+
+          case 19:
+            _context7.next = 21;
+            return client.publish([localScreenTracks]);
+
+          case 21:
+            _context7.next = 25;
             break;
 
-          case 18:
+          case 23:
             sharingScreen = false;
             cameraButton.style.display = 'block';
 
-          case 20:
+          case 25:
           case "end":
             return _context7.stop();
         }

@@ -78,6 +78,11 @@ for(let i =0; videoFrames.length>i;i++){
   videoFrames[i].addEventListener('click',expandVideoFrame);
 }
 
+let setUserID_Display_Frame=(value)=>{
+    userIDInDisplayFrame=value;
+}
+
 displayFrame.addEventListener("click",hideDisplayFrame);
 
-export {expandVideoFrame,hideDisplayFrame,displayFrame,videoFrames,userIDInDisplayFrame};
+
+export {expandVideoFrame,hideDisplayFrame,displayFrame,videoFrames,setUserID_Display_Frame};
