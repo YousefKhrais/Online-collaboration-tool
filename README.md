@@ -25,7 +25,13 @@ npm install
 npm run dev
 ```
 
-Migrate the DB Schema
+Install laravel packages
+
+```
+copmoser install
+```
+
+Migrate the database schema
 
 ```
 php artisan migrate --seed
