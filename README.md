@@ -9,7 +9,7 @@ A web-based education tool that aims to make learning programming more interacti
 - 120192379 - Nadeem Alsammak
 - 120180372 - Yousef Almashharawi
 
-### Installation Steps:
+## Installation Steps:
 
 Clone installation GIT repository on the master host
 
