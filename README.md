@@ -31,6 +31,14 @@ Install laravel packages
 copmoser install
 ```
 
+Copy .env file & create app key
+
+```
+cp .env.example .env
+
+php artisan key:generate
+```
+
 Migrate the database schema
 
 ```
