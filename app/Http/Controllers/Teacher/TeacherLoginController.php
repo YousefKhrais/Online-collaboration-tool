@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
-use App\Models\teacher;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -11,28 +11,30 @@ use Illuminate\Support\Facades\Hash;
 class TeacherLoginController extends Controller
 {
 
-    public function index(){
+    public function index()
+    {
         return view("Teacher/LoginPage");
     }
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
         $rules = [
-            "email"=>["required"],
-            "password"=>["required"],
+            "email" => ["required"],
+            "password" => ["required"],
         ];
 
         $result = $request->validate($rules);
-        if(!$request){
+        if (!$request) {
             return back()->withErrors();
         }
 
-        $teacher = teacher::query()->where("email",$result["email"])->first();
+        $teacher = Teacher::query()->where("email", $result["email"])->first();
 
-        if(!$teacher){
+        if (!$teacher) {
             return "teacher not found";
         }
 
-        if(!Hash::check($result["password"],$teacher->password)){
+        if (!Hash::check($result["password"], $teacher->password)) {
             return "password wrong";
         }
 
@@ -40,7 +42,9 @@ class TeacherLoginController extends Controller
 
         return redirect()->route("home");
     }
-    public function logout(){
+
+    public function logout()
+    {
         \auth("teacher")->logout();
         return redirect()->route("home");
 

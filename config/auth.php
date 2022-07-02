@@ -79,11 +79,11 @@ return [
         ],
         'student' => [
             'driver' => 'eloquent',
-            'model' => \App\Models\student::class,
+            'model' => \App\Models\Student::class,
         ],
         'teacher' => [
             'driver' => 'eloquent',
-            'model' => \App\Models\teacher::class,
+            'model' => \App\Models\Teacher::class,
         ],
         // 'users' => [
         //     'driver' => 'database',

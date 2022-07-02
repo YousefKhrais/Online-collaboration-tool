@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
-use Database\Seeders\student;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -12,28 +12,31 @@ use Illuminate\Support\Facades\Redirect;
 class LoginController extends Controller
 {
 
-    public function __construct(){
+    public function __construct()
+    {
 
     }
 
-    public function index(){
+    public function index()
+    {
         return view("Student/LoginPage");
     }
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
         $rules = [
-          "email"=>"required",
-        "password"=>"required"
+            "email" => "required",
+            "password" => "required"
         ];
         $result = $request->validate($rules);
 
-        $student = \App\Models\student::query()->where("email",$result["email"])->first();
+        $student = Student::query()->where("email", $result["email"])->first();
 
-        if(!$student){
+        if (!$student) {
             return "user not found";
         }
 
-        if(!Hash::check($request->input("password"),$student->password)){
+        if (!Hash::check($request->input("password"), $student->password)) {
             return "password is  wrong!!";
         }
 
@@ -42,7 +45,8 @@ class LoginController extends Controller
         return \redirect()->route("home");
     }
 
-    public function logout(){
+    public function logout()
+    {
         \auth("student")->logout();
         return \redirect()->route("home");
     }
