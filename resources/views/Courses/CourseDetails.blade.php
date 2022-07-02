@@ -8,19 +8,21 @@
         <div class="breadcrumbs" data-aos="fade-in">
             <div class="container">
                 <h2>Course Details</h2>
-                <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas sit quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum praesentium. </p>
+                <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas
+                    sit quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum praesentium. </p>
             </div>
         </div><!-- End Breadcrumbs -->
 
         <div id="myApp">
-            <input  id="course_id" type="hidden" value="{{$course_id}}"/>
+            <input id="course_id" type="hidden" value="{{$course_id}}"/>
             <!-- ======= Cource Details Section ======= -->
             <section id="course-details" class="course-details">
                 <div class="container" data-aos="fade-up">
 
                     <div class="row">
                         <div class="col-lg-8">
-                            <img style="height: 500px; width: 100% ; border-radius: 10%;" :src="course.image" class="img-fluid" alt="">
+                            <img style="height: 500px; width: 100% ; border-radius: 10%;" :src="course.image_link"
+                                 class="img-fluid" alt="">
                             <h3>@{{course.title}}</h3>
                             <p>
                                 @{{course.description}}
@@ -30,7 +32,7 @@
 
                             <div class="course-info d-flex justify-content-between align-items-center">
                                 <h5>Trainer</h5>
-                                <p><a href="#">@{{course.name}}</a></p>
+                                <p><a href="#">@{{course.title}}</a></p>
                             </div>
 
                             <div class="course-info d-flex justify-content-between align-items-center">
@@ -52,9 +54,9 @@
                                 <h5>Schedule</h5>
                                 <div>
                                     <p class="text-success">
-                                        Hours :   5.00 pm - 7.00 pm
+                                        Hours : 5.00 pm - 7.00 pm
                                     </p>
-                                    <p class="text-success">Days :  saturday-sunday</p>
+                                    <p class="text-success">Days : saturday-sunday</p>
                                 </div>
 
                             </div>

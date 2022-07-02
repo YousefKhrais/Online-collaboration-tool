@@ -20,12 +20,12 @@
 
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                         <div class="member">
-                            <img src="{{$t->profile_image}}" style="border-radius: 20%" class="img-fluid" alt="">
+                            <img src="{{$t->image_link}}" style="border-radius: 20%" class="img-fluid" alt="">
                             <div class="member-content">
-                                <h4>{{$t->name}}</h4>
-                                @foreach(\GuzzleHttp\json_decode($t->interests) as $i)
-                                 <span>{{$i}}</span>
-                                @endforeach
+                                <h4>{{$t->getFullName()}}</h4>
+{{--                                @foreach(\GuzzleHttp\json_decode($t->interests) as $i)--}}
+{{--                                 <span>{{$i}}</span>--}}
+{{--                                @endforeach--}}
                                 <p>
                                     {{$t->description}}
                                 </p>

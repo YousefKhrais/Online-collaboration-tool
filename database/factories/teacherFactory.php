@@ -19,20 +19,30 @@ class teacherFactory extends Factory
     public function definition()
     {
         return [
-            'name'=>$this->faker->name(),
-            'description'=>$this->faker->sentence(),
-            'interests'=>json_encode(['1'=>'ai' , '2'=>'data science']),
-            'profile_image'=>'https://source.unsplash.com/random',
-            'facebook'=>$this->faker->randomElement([null,"https://www.facebook.com"]),
-            'twitter'=>$this->faker->randomElement([null,"https://www.twitter.com"]),
-            'instagram'=>$this->faker->randomElement([null,"https://www.instagram.com"]),
-            'linkedin'=>$this->faker->randomElement([null,"https://www.linkedin.com"]),
             'email' => $this->faker->unique()->safeEmail(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
-            'phone'=>$this->faker->phoneNumber(),
-            'mobile'=>$this->faker->phoneNumber(),
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
+            'phone_number' => $this->faker->numberBetween(0,10),
 
+            'date_of_birth' => $this->faker->date(),
+            'status' => 1,
+            'gender' => 0,
+            'address' => $this->faker->address(),
+            'image_link' => 'https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png',
+            'description' => $this->faker->realText(),
+
+            'linkedin' => "linkedin",
+            'twitter' => "website",
+            'instagram' => "instagram",
+            'facebook' => "facebook",
+
+            'courses_count' => 0,
+            'requests_count' => 0,
+
+            'interests'=>json_encode(['1'=>'ai' , '2'=>'data science']),
+
+            'remember_token' => Str::random(10)
         ];
     }
 

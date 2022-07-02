@@ -17,9 +17,9 @@ class categoryFactory extends Factory
     public function definition()
     {
         return [
-            'name'=>$this->faker->name(),
-            'description'=>$this->faker->sentence(),
-            'num_of_courses'=>$this->faker->numberBetween(1,100),
+            'title' => $this->faker->name(),
+            'description' => $this->faker->sentence(),
+            'courses_count' => 0,
         ];
     }
 }

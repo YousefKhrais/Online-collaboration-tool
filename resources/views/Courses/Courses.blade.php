@@ -1,73 +1,57 @@
 @extends("layouts.Home")
 @section("courses")
 
-<main id="main" data-aos="fade-in">
+    <main id="main" data-aos="fade-in">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs">
-        <div class="container">
-            <h2>Courses</h2>
-            <p> Here Is our paid Courses </p>
+        <div class="breadcrumbs">
+            <div class="container">
+                <h2>Courses</h2>
+                <p> Here Is our paid Courses </p>
+            </div>
         </div>
-    </div><!-- End Breadcrumbs -->
-    <div id="coursesPage">
 
-    <!-- ======= Courses Section ======= -->
-    <section id="courses" class="courses" >
-        <div class="container" data-aos="fade-up">
+        <section id="popular-courses" class="courses">
+            <div class="container" data-aos="fade-up">
+                <div class="section-title">
+                    <h2>Courses</h2>
+                    <p>Popular Courses</p>
+                </div>
 
-            <div class="row" data-aos="zoom-in" data-aos-delay="100">
+                @foreach($courses->chunk(3) as $courses_row)
+                    <div class="row course-set courses__row">
+                        @foreach($courses_row as $course)
+                            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+                                <div class="course-item">
+                                    <img src="{{asset("Home/assets/img/course-2.jpg")}}" class="img-fluid" alt="...">
+                                    <div class="course-content">
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <h4>{{$course->category->title}}</h4>
+                                            <h4 class="bg-info">{{$course->num_of_hours}} Hours</h4>
+                                            <p class="price">${{$course->price}}</p>
+                                        </div>
 
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" v-for="c in courses" :key="c.id">
-                    <div class="course-item">
-                        <img v-bind:src="c.image" class="img-fluid" alt="Course Image">
-                        <div class="course-content">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4>Price</h4>
-                                <p class="price">@{{c.price}}</p>
-                            </div>
-
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4>Hours</h4>
-                            <p class="price">@{{c.num_of_hours}}</p>
-                        </div>
-
-                            <h3><a href="course-details.html">Copywriting</a></h3>
-                            <p>@{{c.description}}</p>
-                            <div class="trainer d-flex justify-content-between align-items-center">
-                                <div class="trainer-profile d-flex align-items-center">
-                                    <img v-bind:src="c.profile_image" alt=""/>
-
-                                    <span class="btn btn-link">@{{c.name}}</span>
-
+                                        <h3><a href="{{ URL('courses/'.$course->id) }}">{{$course->title}}</a>
+                                        </h3>
+                                        <p>{{$course->description}}</p>
+                                        <div class="trainer d-flex justify-content-between align-items-center">
+                                            <div class="trainer-profile d-flex align-items-center">
+                                                <img src="{{$course->teacher->image_link}}"
+                                                     class="img-fluid"
+                                                     alt="">
+                                                <span>{{$course->teacher->getFullName()}}</span>
+                                            </div>
+                                            <div class="trainer-rank d-flex align-items-center">
+                                                <i class="bx bx-user"></i>&nbsp;{{$course->getStudentsCount()}}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="trainer-rank d-flex align-items-center">
-                                    <i class="bx bx-user"></i>&nbsp;20
-                                    &nbsp;&nbsp;
-                                    <i class="bx bx-heart"></i>&nbsp;85
-                                </div>
-
                             </div>
-
-                            <a type="submit"  class="btn  btn-sm btn-link">
-                                View Details
-                            </a>
-
-                        </div>
+                        @endforeach
                     </div>
-                </div> <!-- End Course Item-->
+                @endforeach
 
             </div>
-
-        </div>
-    </section><!-- End Courses Section -->
-    </div>
-</main><!-- End #main -->
-
-@endsection
-
-@section("scripts")
-<script src="{{asset("js/Courses/courses.js")}}">
-
-</script>
+        </section>
+    </main>
 @endsection

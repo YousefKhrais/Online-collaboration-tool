@@ -49,7 +49,6 @@
                         </div>
 
                     </form>
-                    <p class="login-wrapper-footer-text">Need an account? <a href="#!" class="text-reset">Signup here</a></p>
                 </div>
             </div>
         </div>
@@ -73,7 +72,7 @@
     <script type='text/javascript' src='#'></script>
     <script type='text/javascript' src='#'></script>
     <script type='text/javascript' src='#'></script>
-    <script type='text/javascript'>#</script>
+    <script type='text/javascript'></script>
     <script type='text/javascript'>var myLink = document.querySelector('a[href="#"]');
         myLink.addEventListener('click', function(e) {
             e.preventDefault();

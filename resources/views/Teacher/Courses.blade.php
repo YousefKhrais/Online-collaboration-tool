@@ -14,7 +14,7 @@
                     </div>
 
                     <div class="card-img">
-                        <img src="{{$c->image}}" style="width: 100%; height: 300px;">
+                        <img src="{{$c->image_link}}" style="width: 100%; height: 300px;">
                     </div>
 
                     <div class="card-body">
@@ -41,7 +41,7 @@
                     <form class="card-footer row"
                           method="get" action="{{route("teacherLobby")}}">
                         <input type="hidden" value="{{$c->course_id}}">
-                        <input type="submit"  value="Go To Course" class="btn btn-sm btn-success">
+                        <input type="submit" value="Go To Course" class="btn btn-sm btn-success">
                     </form>
 
                 </div>

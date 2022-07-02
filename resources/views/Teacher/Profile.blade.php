@@ -22,9 +22,9 @@
                     <div class="col-12 bg-white p-0 px-3 py-3 mb-3">
                         <div class="d-flex flex-column align-items-center">
                             <img class="photo"
-                                 :src="teacher.profile_image"
+                                 :src="teacher.image_link"
                                  alt="">
-                            <p class="fw-bold h4 mt-3" >@{{teacher.name}}</p>
+                            <p class="fw-bold h4 mt-3" >@{{teacher.first_name}} @{{teacher.last_name}}</p>
                             <p class="text-muted">@{{teacher.description}}</p>
                             <div class="d-flex ">
                                 <a href="{{route("editTeacherProfile")}}" class="btn btn-primary follow me-2">
@@ -50,23 +50,17 @@
                     <div class="col-12 bg-white px-3 mb-3 pb-3">
                         <div class="d-flex align-items-center justify-content-between border-bottom">
                             <p class="py-2">Full Name</p>
-                            <p class="py-2 text-muted">@{{teacher.name}}</p>
+                            <p class="py-2 text-muted">@{{teacher.first_name}} @{{teacher.last_name}}</p>
                         </div>
                         <div class="d-flex align-items-center justify-content-between border-bottom">
                             <p class="py-2">Email</p>
                             <p class="py-2 text-muted">@{{teacher.email}}</p>
                         </div>
 
-                        <div v-if="teacher.phone" class="d-flex align-items-center justify-content-between border-bottom">
+                        <div v-if="teacher.phone_number" class="d-flex align-items-center justify-content-between border-bottom">
                             <p class="py-2">Phone</p>
-                            <p class="py-2 text-muted">@{{teacher.phone}}</p>
+                            <p class="py-2 text-muted">@{{teacher.phone_number}}</p>
                         </div>
-
-                        <div v-if="teacher.mobile" class="d-flex align-items-center justify-content-between border-bottom">
-                            <p class="py-2">Mobile</p>
-                            <p class="py-2 text-muted">@{{teacher.mobile}}</p>
-                        </div>
-
 
                         <div v-if="teacher.address" class="d-flex align-items-center justify-content-between">
                             <p class="py-2">Address</p>

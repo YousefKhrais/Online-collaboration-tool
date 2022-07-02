@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateCourseStudentTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('teacher', function (Blueprint $table) {
-            $table->string("phone")->nullable();
-            $table->string("mobile")->nullable();
+        Schema::create('course_student', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('course_id')->unsigned();
+            $table->integer('student_id')->unsigned();
         });
     }
 
@@ -26,9 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('teacher', function (Blueprint $table) {
-            $table->dropColumn(["phone","mobile"]);
-
-        });
+        Schema::dropIfExists('course_student');
     }
-};
+}

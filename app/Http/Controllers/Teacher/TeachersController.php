@@ -10,21 +10,22 @@ use Illuminate\Http\Request;
 class TeachersController extends Controller
 {
 
-    public function index(){
+    public function index()
+    {
         $teachers = teacher::all();
-        return view("Teacher/Trainers",['teachers'=>$teachers]);
+        return view("Teacher/Trainers", ['teachers' => $teachers]);
     }
 
-    public function getTeacherCourses(Request $request){
-
+    public function getTeacherCourses(Request $request)
+    {
         $teacher_id = auth("teacher")->user()->id;
 
-        $courses =teacher::find($teacher_id)->getCourses();
+        $teacher = Teacher::with('courses')
+            ->select('*')
+            ->where('id', $teacher_id)
+            ->first();
 
-        return view("Teacher/Courses",[
-            "courses"=>$courses
-        ]);
-
+        return view("Teacher/Courses", ["courses" => $teacher->courses]);
     }
 
 }
