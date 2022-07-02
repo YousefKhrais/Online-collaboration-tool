@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Courses;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use App\Models\course;
-use App\Models\course_registration;
+use App\Models\Course;
 use App\Models\Student;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
@@ -15,7 +14,6 @@ class CoursesController extends Controller
 
     public function index()
     {
-
         $courses = Course::with('students')
             ->with('teacher')
             ->with('category')
@@ -39,15 +37,23 @@ class CoursesController extends Controller
     {
         $is_registered = false;
 
-        if (auth("student")->check()) {
-            $record_data = [
-                "course_id" => $course->id,
-                "teacher_id" => $course->getTeacher()->id,
-                "student_ID" => auth("student")->user()->id,
-            ];
+        $is_registered = $course->students->contains(auth("student")->user()->id);
 
-            $is_registered = $this->isExist($record_data);
-        }
+//        $course = Course::with('students')
+//            ->select('*')
+//            ->where('id', $course->id)
+//            ->first();
+
+
+//        if (auth("student")->check()) {
+//            $record_data = [
+//                "course_id" => $course->id,
+//                "teacher_id" => $course->getTeacher()->id,
+//                "student_ID" => auth("student")->user()->id,
+//            ];
+//
+//            $is_registered = $this->isExist($record_data);
+//        }
 
         return view("Courses/CourseDetails", [
             "course_id" => $course->id,
@@ -93,26 +99,21 @@ class CoursesController extends Controller
             return "you are already registered to this course";
         }
 
-        $registration_record = course_registration::create(
-            $result
-        );
+        $course = Course::where('id', $result["course_id"])->first();
+        $registration_record = $course->students()->attach($result["student_ID"]);
 
-        if (!$registration_record) {
-            return "unknown Error";
-        }
-
-        return redirect()->route("courseDetails", ["course" => $result["course_id"]]);
+        return redirect()->back()->with('update_status', $registration_record);
     }
 
     private function isExist($record_data)
     {
-        $record = course_registration::query()->where("student_ID", $record_data["student_ID"])
-            ->where("course_id", $record_data["course_id"])
-            ->where("teacher_id", $record_data["teacher_id"])->first();
+        $course = Course::with('students')
+            ->select('*')
+            ->where('id', $record_data["course_id"])
+            ->first();
 
-        //return true if recored exist(not null)
-        return !is_null($record);
+        $is_registered = $course->students->contains(auth("student")->user()->id);
+        return $is_registered;
     }
-
 }
 

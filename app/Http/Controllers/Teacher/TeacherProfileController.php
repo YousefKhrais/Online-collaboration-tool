@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 
 class TeacherProfileController extends Controller
 {
-
     public function index(){
         $teacher_id = auth("teacher")->user()->id;
         return view("Teacher/Profile", ["teacher_id"=>$teacher_id]);

@@ -6,6 +6,22 @@
 
         <!-- ======= Breadcrumbs ======= -->
         <div class="breadcrumbs" data-aos="fade-in">
+            @if (session()->has('update_status'))
+                @if (session('update_status'))
+                    <div class="alert alert-success">Updated Successfully</div>
+                @else
+                    <div class="alert alert-danger">Failed to update student</div>
+                @endif
+            @endif
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="container">
                 <h2>Course Details</h2>
                 <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas

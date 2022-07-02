@@ -6,7 +6,7 @@
         <div class="breadcrumbs">
             <div class="container">
                 <h2>Courses</h2>
-                <p> Here Is our paid Courses </p>
+                <p> Here is our most popular courses</p>
             </div>
         </div>
 
@@ -49,6 +49,7 @@
                             </div>
                         @endforeach
                     </div>
+                    </br>
                 @endforeach
 
             </div>

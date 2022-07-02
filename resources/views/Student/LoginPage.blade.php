@@ -1,81 +1,81 @@
 @extends("layouts.Home")
 
 @section("loginPage")
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-6 col-md-7 intro-section">
-                <div class="brand-wrapper">
-                    <h1><a href="https://stackfindover.com/">Logo</a></h1>
-                </div>
-                <div class="intro-content-wrapper">
-                    <h1 class="intro-title">Oline Collaborative Learning  !</h1>
-                    <p class="intro-text"> Oline Collaborative Learning Oline Collaborative Learning Oline Collaborative LearningOline Collaborative Learning Oline Collaborative Learning</p>
-                    <a href="#!" class="btn btn-read-more">Read more</a>
-                </div>
-                <div class="intro-section-footer">
-                    <na class="footer-nav">
-                        <a href="#!">Facebook</a>
-                        <a href="#!">Twitter</a>
-                        <a href="#!">Gmail</a>
-                    </na>
-                </div>
+</br>
+</br>
+</br>
+<!-- Jumbotron -->
+<div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
+    <div class="container">
+        <div class="row gx-lg-5 align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <h1 class="my-5 display-3 fw-bold ls-tight">
+                    The best offer <br/>
+                    <span class="text-primary">for your business</span>
+                </h1>
+                <p style="color: hsl(217, 10%, 50.8%)">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Eveniet, itaque accusantium odio, soluta, corrupti aliquam
+                    quibusdam tempora at cupiditate quis eum maiores libero
+                    veritatis? Dicta facilis sint aliquid ipsum atque?
+                </p>
             </div>
-            <div class="col-sm-6 col-md-5 form-section">
-                <div class="login-wrapper">
-                    <h2 class="login-title">Sign in</h2>
-                    <form action="{{route("studentLogin")}}" method="post">
-                        @csrf
-                        <div class="form-group">
-                            <label for="email" class="sr-only">Email</label>
-                            <input type="email" name="email" id="email" class="form-control" placeholder="Email">
-                            @error("email")
-                            <small class="text-danger">Please Enter E-Mail</small>
-                            @enderror
-                        </div>
 
-                        <div class="form-group mb-3">
-                            <label for="password" class="sr-only">Password</label>
-                            <input type="password" name="password" id="password" class="form-control" placeholder="Password">
-                            @error("password")
-                            <small class="text-danger">
-                                Please Enter Password
-                            </small>
-                            @enderror
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="card">
+                    <div class="card-body py-5 px-md-5">
+                        <div class="text-center">
+                            <h2 class="fw-bold mb-5">Sign up now</h2>
                         </div>
+                        <form action="{{route("studentLogin")}}" method="post">
+                            @csrf
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="email">Email address</label>
+                                <input type="email" name="email" id="email" class="form-control"/>
+                                @error("email")
+                                <small class="text-danger">Please Enter E-Mail</small>
+                                @enderror
+                            </div>
 
-                        <div class="d-flex justify-content-between align-items-center mb-5">
-                            <input name="login" id="login" class="btn login-btn" type="submit" value="Login">
-                            <a href="#!" class="forgot-password-link">Password?</a>
-                        </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="password">Password</label>
+                                <input type="password" name="password" id="password" class="form-control"/>
+                                @error("password")
+                                <small class="text-danger">
+                                    Please Enter Password
+                                </small>
+                                @enderror
+                            </div>
 
-                    </form>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="remember"
+                                       id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                <label class="form-check-label" for="remember">
+                                    {{ __('Remember Me') }}
+                                </label>
+                            </div>
+
+                            <div class="text-center p-3">
+                                <button type="submit" class="btn btn-dark mb-3 w-50 rounded-pill">
+                                    Sign in
+                                </button>
+                            </div>
+
+                            <div>
+                                <div class="float-left">Don't have an account?<a href="#!" class="fw-bold"> Sign Up</a></div>
+                                <div class="float-right">Forgot Your Password?<a href="#!" class="fw-bold"> Reset Password</a></div><br>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-@endsection
+</div>
+</section>
 
 
-@section("style")
-    <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' rel='stylesheet'>
-    <link href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' rel='stylesheet'>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset("css/Student/loginPage.css")}}">
-@endsection
-
-@section("script")
-
-    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-    <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js'></script>
-    <script type='text/javascript' src='#'></script>
-    <script type='text/javascript' src='#'></script>
-    <script type='text/javascript' src='#'></script>
-    <script type='text/javascript'></script>
-    <script type='text/javascript'>var myLink = document.querySelector('a[href="#"]');
-        myLink.addEventListener('click', function(e) {
-            e.preventDefault();
-        });</script>
+{{--                            <input name="login" id="login" class="btn login-btn" type="submit" value="Login">--}}
 
 @endsection
