@@ -14,11 +14,14 @@
     <link href="{{asset("Home/assets/img/apple-touch-icon.png")}}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-{{--    <link href="{{asset("Home/vendor/animate.css/animate.min.css")}}" rel="stylesheet">--}}
-    <link href="{{asset("Home/assets/vendor/aos/aos.css")}}" rel="stylesheet"">
+    {{--    <link href="{{asset("Home/vendor/animate.css/animate.min.css")}}" rel="stylesheet">--}}
+    <link href="{{asset("Home/assets/vendor/aos/aos.css")}}" rel="stylesheet"
+    ">
     <link href="{{asset("Home/assets/vendor/bootstrap/css/bootstrap.min.css")}}" rel="stylesheet">
     <link href="{{asset("Home/assets/vendor/bootstrap-icons/bootstrap-icons.css")}}" rel="stylesheet">
     <link href="{{asset("Home/assets/vendor/boxicons/css/boxicons.min.css")}}" rel="stylesheet">
@@ -27,9 +30,15 @@
 
     <!-- Template Main CSS File -->
     <link href="{{asset("Home/assets/css/style.css")}}" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
     @yield("style")
 
 </head>
@@ -58,8 +67,15 @@
                 @elseauth("teacher")
                     @include("layouts.LoginRegisterMenu.TeacherLoginRegisterationMenu")
                 @else
-                    <li>
-                    <a href="{{route("home")}}">Login/Register</a>
+                    <li class="dropdown">
+                        <a href="#">
+                            <span>Login/Register</span>
+                            <i class="bi bi-chevron-down"></i>
+                        </a>
+                        <ul>
+                            <li><a href="{{route("studentLogin")}}">Student Login</a></li>
+                            <li><a href="{{route("teacherLogin")}}">Teacher Login</a></li>
+                        </ul>
                     </li>
                 @endauth
             </ul>
@@ -160,7 +176,8 @@
 </footer><!-- End Footer -->
 
 <div id="preloader"></div>
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
 
 <!-- Vendor JS Files -->
 <script src="{{asset("Home/assets/vendor/purecounter/purecounter.js")}}"></script>
