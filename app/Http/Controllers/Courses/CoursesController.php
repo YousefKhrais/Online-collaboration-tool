@@ -37,7 +37,9 @@ class CoursesController extends Controller
     {
         $is_registered = false;
 
-        $is_registered = $course->students->contains(auth("student")->user()->id);
+        if (auth("student")->check()) {
+            $is_registered = $course->students->contains(auth("student")->user()->id);
+        }
 
 //        $course = Course::with('students')
 //            ->select('*')
