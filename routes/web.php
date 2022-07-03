@@ -63,7 +63,7 @@ Route::prefix('/categories')->group(function () {
 
 Route::prefix('/courses')->group(function () {
     Route::get('/', [CoursesController::class, "index"])->name("courses");
-    Route::get('/{course}', [CoursesController::class, "show"])->name("courseDetails");
+    Route::get('/{id}', [CoursesController::class, "show"])->name("courseDetails");
     Route::post("/entrollCourse", [CoursesController::class, "entroll"])->name("entrollCourse")->middleware("auth:student");
 });
 

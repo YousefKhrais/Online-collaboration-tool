@@ -96,4 +96,4 @@
         </div>
 
     </div>
-</section><!-- End Cource Details Tabs Section -->
+</section>

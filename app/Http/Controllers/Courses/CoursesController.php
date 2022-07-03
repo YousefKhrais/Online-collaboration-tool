@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 
 class CoursesController extends Controller
 {
-
     public function index()
     {
         $courses = Course::with('students')
@@ -32,33 +31,24 @@ class CoursesController extends Controller
         return json_encode(["courses" => $courses]);
     }
 
-    //show for all , and Entroll or students
-    public function show(course $course)
+    public function show($id)
     {
+        $course = Course::with('students')
+            ->with("teacher")
+            ->with("category")
+            ->select('*')
+            ->where('id', $id)
+            ->first();
+
+        if ($course == null)
+            return redirect()->back()->withErrors(['Course does not exists.']);
+
         $is_registered = false;
-
-        if (auth("student")->check()) {
+        if (auth("student")->check())
             $is_registered = $course->students->contains(auth("student")->user()->id);
-        }
 
-//        $course = Course::with('students')
-//            ->select('*')
-//            ->where('id', $course->id)
-//            ->first();
-
-
-//        if (auth("student")->check()) {
-//            $record_data = [
-//                "course_id" => $course->id,
-//                "teacher_id" => $course->getTeacher()->id,
-//                "student_ID" => auth("student")->user()->id,
-//            ];
-//
-//            $is_registered = $this->isExist($record_data);
-//        }
-
-        return view("Courses/CourseDetails", [
-            "course_id" => $course->id,
+        return view("Courses.CourseDetails", [
+            "course" => $course,
             "is_registered" => $is_registered
         ]);
     }
@@ -86,20 +76,18 @@ class CoursesController extends Controller
     public function entroll(Request $request)
     {
         $rules = [
-            "course_id" => ["required"],
-            "teacher_id" => ["required"]
+            "course_id" => ["required"]
         ];
+
         $result = $request->validate($rules);
 
-        if (!$result) {
-            return "error";
-        }
+        if (!$result)
+            return redirect()->back()->withErrors(['Could not enroll you']);
 
         $result["student_ID"] = auth("student")->user()->id;
 
-        if ($this->isExist($result)) {
-            return "you are already registered to this course";
-        }
+        if ($this->isExist($result))
+            return redirect()->back()->withErrors(['you are already registered to this course.']);
 
         $course = Course::where('id', $result["course_id"])->first();
         $registration_record = $course->students()->attach($result["student_ID"]);

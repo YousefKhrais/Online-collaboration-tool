@@ -25,10 +25,10 @@ class CreateCoursesTable extends Migration
             $table->integer('teacher_id')->unsigned();
             $table->integer('category_id')->unsigned();
 
-            $table->json("schedule")->nullable(true);
-            $table->json("requirements")->nullable(true);
-            $table->json("syllabus")->nullable(true);
-            $table->json("outline")->nullable(true);
+            $table->string("schedule")->nullable(true);
+            $table->string("requirements")->nullable(true);
+            $table->string("syllabus")->nullable(true);
+            $table->string("outline")->nullable(true);
             $table->timestamps();
         });
     }
