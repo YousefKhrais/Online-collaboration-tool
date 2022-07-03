@@ -14,6 +14,7 @@ class Student extends Authenticatable
 
     protected $fillable = [
         'email',
+        'password',
         'first_name',
         'last_name',
         'phone_number',
@@ -25,11 +26,8 @@ class Student extends Authenticatable
         'facebook',
         'twitter',
         'instagram',
-        'github'
-    ];
-
-    protected $hidden = [
-        'password', 'remember_token',
+        'github',
+        'remember_token'
     ];
 
     public function courses()

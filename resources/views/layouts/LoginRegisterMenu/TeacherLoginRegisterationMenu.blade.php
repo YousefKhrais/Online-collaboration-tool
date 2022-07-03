@@ -7,6 +7,6 @@
     <ul>
         <li><a href="{{route("teacher_courses")}}">My Courses</a></li>
         <li><a href="{{route("teacherProfile")}}">Profile</a></li>
-        <li class="text-danger"><a href="{{route("teacherLogOut")}}">LogOut</a></li>
+        <li class="text-danger"><a href="{{route("teacherLogOut")}}">Log out</a></li>
     </ul>
 </li>

@@ -22,7 +22,7 @@ class studentFactory extends Factory
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
-            'phone_number' => $this->faker->numberBetween(0,10),
+            'phone_number' => $this->faker->numberBetween(0, 10),
 
             'date_of_birth' => $this->faker->date(),
             'status' => 1,
@@ -35,7 +35,7 @@ class studentFactory extends Factory
             'instagram' => "instagram",
             'facebook' => "facebook",
 
-//            'remember_token' => Str::random(10)
+            'remember_token' => Str::random(10)
         ];
     }
 }

@@ -7,7 +7,6 @@
     <ul>
         <li><a href="#">My Courses</a></li>
         <li><a href="{{route("StudentProfile")}}">Profile</a></li>
-        <li><a href="#">Payment</a></li>
-        <li class="text-danger"><a href="{{route("studentLogout")}}">LogOut</a></li>
+        <li class="text-danger"><a href="{{route("studentLogout")}}">Log out</a></li>
     </ul>
 </li>

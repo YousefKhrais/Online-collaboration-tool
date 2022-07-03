@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Mentor Bootstrap Template - Index</title>
+    <title>Online Collaboration Tool</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -20,8 +20,7 @@
 
     <!-- Vendor CSS Files -->
     {{--    <link href="{{asset("Home/vendor/animate.css/animate.min.css")}}" rel="stylesheet">--}}
-    <link href="{{asset("Home/assets/vendor/aos/aos.css")}}" rel="stylesheet"
-    ">
+    <link href="{{asset("Home/assets/vendor/aos/aos.css")}}" rel="stylesheet">
     <link href="{{asset("Home/assets/vendor/bootstrap/css/bootstrap.min.css")}}" rel="stylesheet">
     <link href="{{asset("Home/assets/vendor/bootstrap-icons/bootstrap-icons.css")}}" rel="stylesheet">
     <link href="{{asset("Home/assets/vendor/boxicons/css/boxicons.min.css")}}" rel="stylesheet">
@@ -59,7 +58,6 @@
                 <li><a href="{{route("about")}}">About</a></li>
                 <li><a href="{{route("courses")}}">Courses</a></li>
                 <li><a href="{{route("trainers")}}">Trainers</a></li>
-                <li><a href="{{route("pricing")}}">Pricing</a></li>
                 <li><a href="{{route("contact")}}">Contact</a></li>
 
                 @auth("student")
