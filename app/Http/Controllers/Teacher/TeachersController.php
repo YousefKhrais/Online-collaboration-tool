@@ -3,16 +3,14 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
-use App\Models\course_registration;
-use App\Models\teacher;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 class TeachersController extends Controller
 {
-
     public function index()
     {
-        $teachers = teacher::all();
+        $teachers = Teacher::all();
         return view("Teacher/Trainers", ['teachers' => $teachers]);
     }
 
@@ -25,7 +23,6 @@ class TeachersController extends Controller
             ->where('id', $teacher_id)
             ->first();
 
-        return view("Teacher/Courses", ["courses" => $teacher->courses]);
+        return view("Teacher/Courses", ["teacher" => $teacher]);
     }
-
 }

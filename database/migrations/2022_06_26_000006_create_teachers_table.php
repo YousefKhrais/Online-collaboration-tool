@@ -27,7 +27,7 @@ class CreateTeachersTable extends Migration
             $table->boolean('status')->default(true);
             $table->boolean('gender');
             $table->string('address');
-            $table->string('image_link')->nullable(false)->default("img/user.png");
+            $table->string('image_link')->nullable(false)->default("https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png");
 
             $table->string("facebook")->nullable(true);
             $table->string("twitter")->nullable(true);

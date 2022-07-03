@@ -87,15 +87,5 @@ class StudentRegistrationRequest extends FormRequest
         ]);
 
         Auth("student")->login($student);
-
-//        if (!Auth::guard('student')->attempt($this->only('email', 'password'), $this->boolean('remember'))) {
-//            RateLimiter::hit($this->throttleKey());
-//
-//            throw ValidationException::withMessages([
-//                'login' => __('auth.failed'),
-//            ]);
-//        }
-//
-//        RateLimiter::clear($this->throttleKey());
     }
 }

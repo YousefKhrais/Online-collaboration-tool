@@ -24,7 +24,7 @@ class CreateStudentsTable extends Migration
             $table->boolean('status')->default(true);
             $table->boolean('gender');
 
-            $table->string('image_link')->nullable(true);
+            $table->string('image_link')->nullable(false)->default("https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png");
             $table->string("description")->nullable(true);
 
             $table->string("facebook")->nullable(true);

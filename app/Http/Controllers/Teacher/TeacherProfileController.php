@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
-use App\Models\student;
-use App\Models\teacher;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 class TeacherProfileController extends Controller
@@ -16,7 +15,7 @@ class TeacherProfileController extends Controller
 
     public function fetchTeacher(Request $request){
         $teacher_id = $request->get("teacher_id");
-        $teacher = teacher::find($teacher_id);
+        $teacher = Teacher::find($teacher_id);
         $data = json_encode([
            "teacher"=>$teacher
         ]);
@@ -24,7 +23,7 @@ class TeacherProfileController extends Controller
     }
 
     public function fetchTeacherSocialMedia(Request $request){
-        $teacher  = teacher::find($request->input("teacher_id"));
+        $teacher  = Teacher::find($request->input("teacher_id"));
 
         $socialMedia = [
             "LinkedIn"=>$teacher->github,
@@ -45,7 +44,7 @@ class TeacherProfileController extends Controller
         $teacher_id = auth("teacher")->user()->id;
         $result = $request->validate($rules);
 
-        $teacher = teacher::find($teacher_id);
+        $teacher = Teacher::find($teacher_id);
 
         $teacher->name=$result["name"];
 

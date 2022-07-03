@@ -17,7 +17,7 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->string('title')->nullable(false);
             $table->string('description')->nullable(false);
-            $table->string('image_link')->nullable(false);
+            $table->string('image_link')->nullable(false)->default("https://dashboard.programming-mentor.site/Home/assets/img/course-2.jpg");
             $table->integer("price")->nullable(false);
             $table->integer('num_of_hours')->nullable(false);//Credits (hours)
             $table->integer('students_count')->default(0);

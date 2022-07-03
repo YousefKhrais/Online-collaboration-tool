@@ -2,10 +2,7 @@
 
 namespace Database\Seeders;
 
-use Database\Factories\categoryFactory;
-use Database\Factories\course_registrationFactory;
-use Database\Factories\courseFactory;
-use Database\Factories\studentFactory;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,18 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
-         \App\Models\User::factory(5)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        User::factory(5)->create();
         $this->call([
-            category::class,
-            teacher::class,
-            studentSeeder::class,
+            CategorySeeder::class,
+            TeacherSeeder::class,
+            StudentSeeder::class,
         ]);
-
     }
 }

@@ -46,7 +46,7 @@ Route::prefix('/student')->group(function () {
 });
 
 Route::prefix('/teacher')->group(function () {
-    Route::get("/getCourses", [TeachersController::class, "getTeacherCourses"])->name("teacher_courses")->middleware("auth:teacher");
+    Route::get("/courses", [TeachersController::class, "getTeacherCourses"])->name("teacher_courses")->middleware("auth:teacher");
     Route::get("/profile", [TeacherProfileController::class, "index"])->name("teacherProfile")->middleware("auth:teacher");
     Route::get("/profile/edit", [TeacherProfileController::class, "editProfile"])->name("editTeacherProfile")->middleware("auth:teacher");
     Route::post("/profile/edit", [TeacherProfileController::class, "updateTeacher"])->name("updateTeacher")->middleware("auth:teacher");
