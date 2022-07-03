@@ -32,10 +32,9 @@ class TeacherFactory extends Factory
             'image_link' => 'https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png',
             'description' => $this->faker->realText(),
 
-            'linkedin' => "linkedin",
-            'twitter' => "website",
-            'instagram' => "instagram",
-            'facebook' => "facebook",
+            'linkedin' => "https://github.com/YousefKhrais",
+            'stack_overflow' => "https://github.com/YousefKhrais",
+            'github' => "https://github.com/YousefKhrais",
 
             'courses_count' => 0,
             'requests_count' => 0,

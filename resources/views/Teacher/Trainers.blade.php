@@ -28,20 +28,16 @@
                                         {{$teacher->description}}
                                     </p>
                                     <div class="social">
-                                        @if(!empty($teacher->twitter))
-                                            <a href="{{$teacher->twitter}}"><i class="bi bi-twitter"></i></a>
-                                        @endif
-
-                                        @if(!empty($teacher->facebook))
-                                            <a href="{{$teacher->facebook}}"><i class="bi bi-facebook"></i></a>
-                                        @endif
-
-                                        @if(!empty($teacher->instagram))
-                                            <a href="{{$teacher->instagram}}"><i class="bi bi-instagram"></i></a>
-                                        @endif
-
                                         @if(!empty($teacher->linkedin))
                                             <a href="{{$teacher->linkedin}}"><i class="bi bi-linkedin"></i></a>
+                                        @endif
+
+                                            @if(!empty($teacher->github))
+                                            <a href="{{$teacher->github}}"><i class="bi bi-github"></i></a>
+                                        @endif
+
+                                        @if(!empty($teacher->stack_overflow))
+                                            <a href="{{$teacher->stack_overflow}}"><i class="bi bi-stack-overflow"></i></a>
                                         @endif
                                     </div>
                                 </div>

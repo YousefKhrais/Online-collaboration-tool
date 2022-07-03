@@ -43,4 +43,9 @@ class Course extends Model
     {
         return count($this->students()->get());
     }
+
+    public function isStudentEnrolled($student_id)
+    {
+        return $this->students->contains($student_id);
+    }
 }

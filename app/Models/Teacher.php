@@ -3,14 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Teacher extends Authenticatable
 {
     use HasFactory;
     protected $guarded = "teacher";
-
     protected $fillable = [
         'email',
         'password',
@@ -22,10 +20,9 @@ class Teacher extends Authenticatable
         'gender',
         'address',
         'image_link',
-        'facebook',
-        'twitter',
-        'instagram',
+        'stack_overflow',
         'linkedin',
+        'github',
         'courses_count',
         'requests_count',
         'description',

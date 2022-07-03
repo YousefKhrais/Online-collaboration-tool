@@ -20,16 +20,15 @@ class CreateStudentsTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->integer('phone_number');
-            $table->date('date_of_birth')->nullable(true);
+            $table->date('date_of_birth')->nullable(true);;
             $table->boolean('status')->default(true);
             $table->boolean('gender');
 
             $table->string('image_link')->nullable(false)->default("https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png");
             $table->string("description")->nullable(true);
 
-            $table->string("facebook")->nullable(true);
-            $table->string("twitter")->nullable(true);
-            $table->string("instagram")->nullable(true);
+            $table->string("linkedin")->nullable(true);
+            $table->string("stack_overflow")->nullable(true);
             $table->string("github")->nullable(true);
 
             $table->string("remember_token")->nullable(true);

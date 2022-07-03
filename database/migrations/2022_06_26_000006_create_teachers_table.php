@@ -29,10 +29,9 @@ class CreateTeachersTable extends Migration
             $table->string('address');
             $table->string('image_link')->nullable(false)->default("https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png");
 
-            $table->string("facebook")->nullable(true);
-            $table->string("twitter")->nullable(true);
-            $table->string("instagram")->nullable(true);
             $table->string("linkedin")->nullable(true);
+            $table->string("stack_overflow")->nullable(true);
+            $table->string("github")->nullable(true);
 
             $table->integer('courses_count')->default(0);
             $table->integer('requests_count')->default(0);
