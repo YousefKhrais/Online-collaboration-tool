@@ -33,10 +33,11 @@ Route::get('/contact', [HomeController::class, "contact"])->name("contact");
 
 Route::prefix('/student')->group(function () {
     Route::get('/', [DashBoard::class, 'index'])->name('studentDashboard');
+    Route::get("/profile", [ProfileController::class, "index"])->name("student.profile.index")->middleware("auth:student");
+    Route::get("/profile/edit", [ProfileController::class, "edit"])->name("student.profile.edit")->middleware("auth:student");
+    Route::post("/profile/update", [ProfileController::class, "update"])->name("student.profile.update")->middleware("auth:student");
+
     Route::get("/session", [SessionController::class, "index"]);
-    Route::get("/profile", [ProfileController::class, "index"])->name("StudentProfile")->middleware("auth:student");
-    Route::get("/profile/edit", [ProfileController::class, "editProfilePage"])->name("StudentEditProfile")->middleware("auth:student");
-    Route::post("/profile/edit", [ProfileController::class, "updateStudent"])->name("updateStudent")->middleware("auth:student");
 
     Route::get("/login", [StudentLoginController::class, "index"])->name("studentLogin");
     Route::get("/logout", [StudentLoginController::class, "logout"])->name("studentLogout");
