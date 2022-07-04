@@ -3,14 +3,48 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Teacher\TeacherProfileUpdateRequest;
+use App\Models\Student;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class TeacherProfileController extends Controller
 {
-    public function index(){
-        $teacher_id = auth("teacher")->user()->id;
-        return view("Teacher/Profile", ["teacher_id"=>$teacher_id]);
+    public function index(Request $request)
+    {
+        $teacher = Teacher::where('id', auth("teacher")->user()->id)->first();
+        return view("Teacher.profile.index", ["teacher" => $teacher]);
+    }
+
+    public function edit(Request $request)
+    {
+        $teacher = Teacher::where('id', auth("teacher")->user()->id)->first();
+        return view("Teacher.profile.edit", ["teacher" => $teacher]);
+    }
+
+    public function update(TeacherProfileUpdateRequest $request)
+    {
+        $result = Teacher::where('id', auth("teacher")->user()->id)->update([
+//            'email' => $request['email'],
+            'first_name' => $request['first_name'],
+            'last_name' => $request['last_name'],
+            'phone_number' => $request['phone_number'],
+            'date_of_birth' => $request['date_of_birth'],
+            'gender' => $request['gender'],
+            'address' => $request['address'],
+            'description' => $request['description'],
+            'github' => $request['github'],
+            'linkedin' => $request['linkedin'],
+            'stack_overflow' => $request['stack_overflow']
+        ]);
+
+        if ($result)
+            Session::flash('alert-success', 'Successfully updated profile');
+        else
+            Session::flash('alert-danger', 'Failed to update profile');
+
+        return redirect()->back();
     }
 
     public function fetchTeacher(Request $request){
@@ -21,7 +55,6 @@ class TeacherProfileController extends Controller
         ]);
         return $data;
     }
-
     public function fetchTeacherSocialMedia(Request $request){
         $teacher  = Teacher::find($request->input("teacher_id"));
 
@@ -60,10 +93,8 @@ class TeacherProfileController extends Controller
 
         return $teacher;
     }
-
     public function editProfile(Request $request){
         $teacher_id = auth("teacher")->user()->id;
         return view("Teacher/EditProfile",["teacher_id"=>$teacher_id]);
     }
-
 }

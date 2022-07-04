@@ -12,6 +12,7 @@ use App\Http\Controllers\Student\ProfileController;
 use App\Http\Controllers\Student\SessionController;
 use App\Http\Controllers\Teacher\TeacherProfileController;
 use App\Http\Controllers\Teacher\TeachersController;
+use App\Http\Controllers\Teacher\TeacherCoursesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,11 +34,13 @@ Route::get('/contact', [HomeController::class, "contact"])->name("contact");
 
 Route::prefix('/student')->group(function () {
     Route::get('/', [DashBoard::class, 'index'])->name('studentDashboard');
-    Route::get("/profile", [ProfileController::class, "index"])->name("student.profile.index")->middleware("auth:student");
-    Route::get("/profile/edit", [ProfileController::class, "edit"])->name("student.profile.edit")->middleware("auth:student");
-    Route::post("/profile/update", [ProfileController::class, "update"])->name("student.profile.update")->middleware("auth:student");
-
     Route::get("/session", [SessionController::class, "index"]);
+
+    Route::prefix('/profile')->group(function () {
+        Route::get("/", [ProfileController::class, "index"])->name("student.profile.index")->middleware("auth:student");
+        Route::get("/edit", [ProfileController::class, "edit"])->name("student.profile.edit")->middleware("auth:student");
+        Route::post("/update", [ProfileController::class, "update"])->name("student.profile.update")->middleware("auth:student");
+    });
 
     Route::get("/login", [StudentLoginController::class, "index"])->name("studentLogin");
     Route::get("/logout", [StudentLoginController::class, "logout"])->name("studentLogout");
@@ -47,10 +50,17 @@ Route::prefix('/student')->group(function () {
 });
 
 Route::prefix('/teacher')->group(function () {
-    Route::get("/courses", [TeachersController::class, "getTeacherCourses"])->name("teacher_courses")->middleware("auth:teacher");
-    Route::get("/profile", [TeacherProfileController::class, "index"])->name("teacherProfile")->middleware("auth:teacher");
-    Route::get("/profile/edit", [TeacherProfileController::class, "editProfile"])->name("editTeacherProfile")->middleware("auth:teacher");
-    Route::post("/profile/edit", [TeacherProfileController::class, "updateTeacher"])->name("updateTeacher")->middleware("auth:teacher");
+    Route::prefix('/courses')->group(function () {
+        Route::get("/", [TeacherCoursesController::class, "index"])->name("teacher_courses")->middleware("auth:teacher");
+        Route::get("/view/{id}", [TeacherCoursesController::class, "view"])->middleware("auth:teacher");
+        Route::post("/enroll/{id}", [TeacherCoursesController::class, "enroll"])->middleware("auth:teacher");
+    });
+
+    Route::prefix('/profile')->group(function () {
+        Route::get("/", [TeacherProfileController::class, "index"])->name("teacher.profile.index")->middleware("auth:teacher");
+        Route::get("/edit", [TeacherProfileController::class, "edit"])->name("teacher.profile.edit")->middleware("auth:teacher");
+        Route::post("/update", [TeacherProfileController::class, "update"])->name("teacher.profile.update")->middleware("auth:teacher");
+    });
 
     Route::get("/login", [TeacherLoginController::class, "index"])->name("teacherLogin");
     Route::get("/logout", [TeacherLoginController::class, "logout"])->name("teacherLogOut");

@@ -13,16 +13,4 @@ class TeachersController extends Controller
         $teachers = Teacher::all();
         return view("Teacher/Trainers", ['teachers' => $teachers]);
     }
-
-    public function getTeacherCourses(Request $request)
-    {
-        $teacher_id = auth("teacher")->user()->id;
-
-        $teacher = Teacher::with('courses')
-            ->select('*')
-            ->where('id', $teacher_id)
-            ->first();
-
-        return view("Teacher/Courses", ["teacher" => $teacher]);
-    }
 }
