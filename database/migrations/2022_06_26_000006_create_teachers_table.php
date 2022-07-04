@@ -27,7 +27,7 @@ class CreateTeachersTable extends Migration
             $table->boolean('status')->default(true);
             $table->boolean('gender');
             $table->string('address');
-            $table->string('image_link')->nullable(false)->default("https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png");
+            $table->string('image_link')->nullable(false)->default("https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp");
 
             $table->string("linkedin")->nullable(true);
             $table->string("stack_overflow")->nullable(true);

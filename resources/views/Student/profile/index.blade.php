@@ -73,6 +73,9 @@
                 <div class="col-lg-8">
                     <div class="card mb-4">
                         <div class="card-body">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                <h6 class="mb-4 text-primary">Personal Details</h6>
+                            </div>
                             <div class="row">
                                 <div class="col-sm-3">
                                     <p class="mb-0">Full Name</p>
@@ -93,7 +96,7 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Phone</p>
+                                    <p class="mb-0">Phone Number</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <p class="text-muted mb-0">{{$student->phone_number}}</p>
@@ -105,98 +108,59 @@
                                     <p class="mb-0">Gender</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">{{$student->gender}}</p>
+                                    <p class="text-muted mb-0">{{$student->getGender()}}</p>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">About</p>
+                                    <p class="mb-0">About Me</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <p class="text-muted mb-0">{{$student->description}}</p>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card mb-4 mb-md-0">
-                                <div class="card-body">
-                                    <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Project
-                                        Status
-                                    </p>
-                                    <p class="mb-1" style="font-size: .77rem;">Web Design</p>
-                                    <div class="progress rounded" style="height: 5px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 80%"
-                                             aria-valuenow="80"
-                                             aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
-                                    <div class="progress rounded" style="height: 5px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 72%"
-                                             aria-valuenow="72"
-                                             aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
-                                    <div class="progress rounded" style="height: 5px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 89%"
-                                             aria-valuenow="89"
-                                             aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
-                                    <div class="progress rounded" style="height: 5px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 55%"
-                                             aria-valuenow="55"
-                                             aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
-                                    <div class="progress rounded mb-2" style="height: 5px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 66%"
-                                             aria-valuenow="66"
-                                             aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Date Of Birth</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">{{$student->date_of_birth}}</p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card mb-4 mb-md-0">
-                                <div class="card-body">
-                                    <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Project
-                                        Status
-                                    </p>
-                                    <p class="mb-1" style="font-size: .77rem;">Web Design</p>
-                                    <div class="progress rounded" style="height: 5px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 80%"
-                                             aria-valuenow="80"
-                                             aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
-                                    <div class="progress rounded" style="height: 5px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 72%"
-                                             aria-valuenow="72"
-                                             aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
-                                    <div class="progress rounded" style="height: 5px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 89%"
-                                             aria-valuenow="89"
-                                             aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
-                                    <div class="progress rounded" style="height: 5px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 55%"
-                                             aria-valuenow="55"
-                                             aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
-                                    <div class="progress rounded mb-2" style="height: 5px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 66%"
-                                             aria-valuenow="66"
-                                             aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Address</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
                                 </div>
                             </div>
+                            <hr>
+                            </br>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                <h6 class="mb-4 text-primary">More Details</h6>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Courses Count</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">{{$student->getCoursesCount()}} Courses</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Join Date</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">{{$student->created_at}}</p>
+                                </div>
+                            </div>
+                            </br>
                         </div>
                     </div>
                 </div>

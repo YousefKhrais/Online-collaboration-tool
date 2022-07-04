@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Student\StudentProfileUpdateRequest;
 use App\Models\student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ProfileController extends Controller
 {
@@ -22,31 +24,27 @@ class ProfileController extends Controller
         return view("Student.profile.edit", ["student" => $student]);
     }
 
-    public function update(Request $request)
+    public function update(StudentProfileUpdateRequest $request)
     {
+        $result = Student::where('id', auth("student")->user()->id)->update([
+//            'email' => $request['email'],
+            'first_name' => $request['first_name'],
+            'last_name' => $request['last_name'],
+            'phone_number' => $request['phone_number'],
+            'date_of_birth' => $request['date_of_birth'],
+            'gender' => $request['gender'],
+            'description' => $request['description'],
+            'github' => $request['github'],
+            'linkedin' => $request['linkedin'],
+            'stack_overflow' => $request['stack_overflow']
+        ]);
 
-        $rules = [
-            "name" => "required",
-            "email" => "required"
-        ];
+        if ($result)
+            Session::flash('alert-success', 'Successfully updated profile');
+        else
+            Session::flash('alert-danger', 'Failed to update profile');
 
-        $student_id = auth("student")->user()->id;
-        $result = $request->validate($rules);
-
-        $student = student::find($student_id);
-
-        $student->name = $result["name"];
-        $student->email = $result["email"];
-//         $student->description=(isset($result["description"])) ? $result["description"] : null ;
-//         $student->facebook=(isset($result["facebook"])) ? $result["facebook"] : null ;
-//         $student->instagram=(isset($result["instagram"])) ? $result["instagram"] : null ;
-//         $student->github=(isset($result["github"])) ? $result["github"] : null ;
-//         $student->twitter=(isset($result["twitter"])) ? $result["twitter"] : null ;
-        $student->phone = (isset($result["phone"])) ? $result["phone"] : null;
-        $student->mobile = (isset($result["mobile"])) ? $result["mobile"] : null;
-        $student->save();
-
-        return $student;
+        return redirect()->back();
     }
 
 

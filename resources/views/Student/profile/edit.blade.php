@@ -1,8 +1,27 @@
 @extends("layouts.Home")
 @section("studentProfile")
 
+
+
     <section style="background-color: #eee;">
         <div class="container py-5">
+            <div class="flash-message">
+                @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                    @if(Session::has('alert-' . $msg))
+                        <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }}</p>
+                    @endif
+                @endforeach
+            </div>
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="row">
                 <div class="col">
                     <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
@@ -21,7 +40,7 @@
                 <div class="col-lg-4">
                     <div class="card mb-4">
                         <div class="card-body text-center">
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                            <img src="{{$student->image_link}}"
                                  alt="avatar"
                                  class="rounded-circle img-fluid" style="width: 150px;">
                             <h5 class="my-3">{{$student->getFullName()}}</h5>
@@ -41,8 +60,8 @@
                                     <div class="d-flex justify-content-between align-items-center ">
                                         <i class="bi bi-linkedin"></i>
                                         <h6 class="text-center m-3">Linkedin:</h6>
-                                    </div> @if(!empty($student->linkedin))
-
+                                    </div>
+                                    @if(!empty($student->linkedin))
                                         <a class="mb-0" href="{{$student->linkedin}}">Linkedin</a>
                                     @endif
                                 </li>
@@ -122,11 +141,11 @@
                                     <div class="col-sm-9 text-secondary">
                                         <select class="form-control" name="gender">
                                             @if ($student->gender)
-                                                <option value="0" selected>Male</option>
-                                                <option value="1">Female</option>
-                                            @else
                                                 <option value="0">Male</option>
                                                 <option value="1" selected>Female</option>
+                                            @else
+                                                <option value="0" selected>Male</option>
+                                                <option value="1">Female</option>
                                             @endif
                                         </select>
                                     </div>
@@ -178,7 +197,7 @@
                                         <h6 class="mb-0">Github Profile</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="text" class="form-control" name="linkedin"
+                                        <input type="text" class="form-control" name="github"
                                                value="{{$student->github}}">
                                     </div>
                                 </div>

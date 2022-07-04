@@ -29,7 +29,7 @@ class TeacherFactory extends Factory
             'status' => 1,
             'gender' => 0,
             'address' => $this->faker->address(),
-            'image_link' => 'https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png',
+            'image_link' => 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp',
             'description' => $this->faker->realText(),
 
             'linkedin' => "https://github.com/YousefKhrais",
