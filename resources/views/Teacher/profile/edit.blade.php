@@ -26,7 +26,7 @@
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item"><a href="{{route("home")}}">Home</a></li>
                             <li class="breadcrumb-item">
-                                <a href="{{route("teacher.profile.index")}}">User Profile</a>
+                                <a href="{{route("teacher.profile.index")}}">Teacher Profile</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">Edit</li>
                         </ol>

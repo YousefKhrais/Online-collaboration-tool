@@ -5,7 +5,7 @@
         <i class="bi bi-chevron-down"></i>
     </a>
     <ul>
-        <li><a href="#">My Courses</a></li>
+        <li><a href="{{route("student.courses.index")}}">My Courses</a></li>
         <li><a href="{{route("student.profile.index")}}">Profile</a></li>
         <li class="text-danger"><a href="{{route("studentLogout")}}">Log out</a></li>
     </ul>

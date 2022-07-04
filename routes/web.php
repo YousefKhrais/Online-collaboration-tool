@@ -10,6 +10,7 @@ use App\Http\Controllers\Rooms\RoomController;
 use App\Http\Controllers\Student\DashBoard;
 use App\Http\Controllers\Student\ProfileController;
 use App\Http\Controllers\Student\SessionController;
+use App\Http\Controllers\Student\StudentCoursesController;
 use App\Http\Controllers\Teacher\TeacherProfileController;
 use App\Http\Controllers\Teacher\TeachersController;
 use App\Http\Controllers\Teacher\TeacherCoursesController;
@@ -35,6 +36,11 @@ Route::get('/contact', [HomeController::class, "contact"])->name("contact");
 Route::prefix('/student')->group(function () {
     Route::get('/', [DashBoard::class, 'index'])->name('studentDashboard');
     Route::get("/session", [SessionController::class, "index"]);
+
+    Route::prefix('/courses')->group(function () {
+        Route::get("/", [StudentCoursesController::class, "index"])->name("student.courses.index")->middleware("auth:student");
+        Route::get("/view/{id}", [StudentCoursesController::class, "view"])->middleware("auth:student");
+    });
 
     Route::prefix('/profile')->group(function () {
         Route::get("/", [ProfileController::class, "index"])->name("student.profile.index")->middleware("auth:student");
