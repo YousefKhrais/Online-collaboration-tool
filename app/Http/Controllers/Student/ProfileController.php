@@ -65,4 +65,5 @@ class ProfileController extends Controller
 
         return json_encode(["social_media" => $socialMedia]);
     }
+
 }

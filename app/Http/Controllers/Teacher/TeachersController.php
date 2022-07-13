@@ -8,9 +8,11 @@ use Illuminate\Http\Request;
 
 class TeachersController extends Controller
 {
+
     public function index()
     {
         $teachers = Teacher::all();
         return view("Teacher/Trainers", ['teachers' => $teachers]);
     }
+
 }

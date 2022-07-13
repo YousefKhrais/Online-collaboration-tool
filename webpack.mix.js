@@ -26,3 +26,17 @@ mix.js("resources/js/Student/editProfile.js","public/js/Student").vue();
 mix.js("resources/js/Teacher/TeacherProfile.js","public/js/Teacher").vue();
 mix.js("resources/js/Teacher/EditProfile.js","public/js/Teacher").vue();
 
+///new profile teacher
+mix.css("resources/css/Teacher/editProfile.css","public/css/ChatRoom");
+
+mix.css("resources/css/ChatRoom/chatRoomStyle.css","public/css/ChatRoom")
+
+mix.js("resources/js/ChatRoom/main.js","public/js/ChatRoom");
+mix.js("resources/js/ChatRoom/manager.js","public/js/ChatRoom").vue();
+
+mix.js("resources/js/ChatRoom/room_rtm.js","public/js/ChatRoom");
+
+// chat room assets
+
+mix.js("resources/js/ChatRoom/Drawing/main.js","public/js/ChatRoom/Drawing");
+mix.css("resources/css/ChatRoom/Drawing/style.css","public/css/ChatRoom/Drawing");

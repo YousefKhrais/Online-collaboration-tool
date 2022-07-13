@@ -1,6 +1,9 @@
 
 import AgoraRTC from "agora-rtc-sdk-ng";
-import {expandVideoFrame,hideDisplayFrame,displayFrame,videoFrames,setUserID_Display_Frame} from "./room";
+import AgoraRTM, {RtmClient} from "agora-rtm-sdk";
+import {handleMemberJoined,handelMemberLeft , leaveChannel , getMembers , handleChannelMessage } from "./room_rtm";
+import {expandVideoFrame,hideDisplayFrame,displayFrame,videoFrames,setUserID_Display_Frame,getUserID_Display_frame} from "./room";
+import getAltAxis from "@popperjs/core/lib/utils/getAltAxis";
 const   APP_ID="18c455e4f5e84408b1fb8758fa0c1585";
 //store id in session storage
 let uid = sessionStorage.getItem("uid");
@@ -10,6 +13,8 @@ if(!uid){
     sessionStorage.setItem("uid",uid);
 }
 
+let rtmClient;
+let channel;
 
 
 let token = null;
@@ -17,6 +22,7 @@ let client; //
 let queryString = window.location.search;
 let urlParams = new URLSearchParams(queryString);
 let roomID = document.getElementById("roomID").value;
+let name = document.getElementById("name").value;
 
 if(!roomID){
     roomID ='main';
@@ -32,6 +38,20 @@ let sharingScreen = false;
 
 let joinRoomInit = async()=>{
     //vp8 ??
+    //rtm section
+    rtmClient  =  AgoraRTM.createInstance(APP_ID);
+    await rtmClient.login({uid,token});
+    channel = await rtmClient.createChannel(roomID);
+    await channel.join();
+    channel.on("MemberJoined",handleMemberJoined);
+    channel.on("MemberLeft",handelMemberLeft);
+    channel.on("ChannelMessage",handleChannelMessage);
+
+    await rtmClient.addOrUpdateLocalUserAttributes({name:name});
+
+    await getMembers();
+
+    //rtc section
     client =   AgoraRTC.createClient({mode:"rtc" , codec:"vp8"});
 
     await client.join(APP_ID,roomID,token);//login and join room
@@ -56,7 +76,6 @@ let joinStream = async()=>{
     let player =`
        <div class="video__container" id="user-container-${uid}">
                       <div class="video-player" id="user-${uid}" >
-
                         </div>
         </div>
      `;
@@ -84,6 +103,17 @@ let handleUserPublish = async (user,mediaType)=>{
 
         document.getElementById("streams__container").insertAdjacentHTML("beforeend",player);
         document.getElementById(`user-container-${user.uid}`).addEventListener("click",expandVideoFrame);
+
+       //  let member=`
+       //  <div class="member__wrapper" id="member__${user.uid}__wrapper">
+       //      <span class="green__icon"></span>
+       //      <p class="member_name">Sulammita</p>
+       //  </div>
+       //
+       // `;
+       //
+       //  document.getElementById("member__list").insertAdjacentHTML("beforeend",member);
+
     }
 
     if(displayFrame.style.display){
@@ -95,6 +125,7 @@ let handleUserPublish = async (user,mediaType)=>{
     if(mediaType==="video"){
         user.videoTrack.play(`user-${user.uid}`);
     }
+
     if(mediaType==="audio"){
         user.audioTrack.play();//miss user id !!!!
     }
@@ -104,7 +135,7 @@ let handleUserPublish = async (user,mediaType)=>{
 let handleUserLeft = async(user)=>{
     delete remoteUsers[user.uid];
     document.getElementById(`user-container-${user.uid}`).remove();
-    if(userIDInDisplayFrame===`user-container-${user.uid}`){
+    if(getUserID_Display_frame()===`user-container-${user.uid}`){
         displayFrame.style.display=null;
         let videoFrames = document.getElementsByClassName(`video__container`);
         for(let i = 0; videoFrames.length>i;i++){
@@ -163,10 +194,11 @@ let ToggleScreen= async (e)=>{
 
                                 </div>
                 </div>
-`;
+        `;
 
         displayFrame.insertAdjacentHTML("beforeend",player);
         document.getElementById(`user-container-${uid}`).addEventListener("click",expandVideoFrame);
+
         // userIDInDisplayFrame  = `user-container-${uid}`;
         setUserID_Display_Frame(`user-container-${uid}`);
         localScreenTracks.play(`user-${uid}`);
@@ -181,7 +213,22 @@ let ToggleScreen= async (e)=>{
 
 }
 
+
 document.getElementById("camera-btn").addEventListener("click",ToggleCamera);
 document.getElementById("mic-btn").addEventListener("click",ToggleMic);
 document.getElementById("screen-btn").addEventListener("click",ToggleScreen);
 joinRoomInit();
+
+window.addEventListener("beforeunload",leaveChannel);
+
+export function getUserID(){
+    return uid;
+}
+
+export function  getChannel(){
+    return channel;
+}
+
+export function getRTMClient(){
+    return rtmClient;
+}

@@ -36,6 +36,7 @@
                             <h3>Course Details</h3>
                         </div>
                         <div class="col-lg-4">
+
                             <div class="course-info d-flex justify-content-between align-items-center">
                                 <h5>Teacher</h5>
                                 <p><a href="#">{{$course->teacher->getFullName()}}</a></p>

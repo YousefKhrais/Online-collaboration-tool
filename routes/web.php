@@ -33,6 +33,18 @@ Route::get('/trainers', [TeachersController::class, "index"])->name("trainers");
 Route::get('/pricing', [HomeController::class, "pricing"])->name("pricing");
 Route::get('/contact', [HomeController::class, "contact"])->name("contact");
 
+Route::get("/xx",function (){
+    return view("ChatRooms/ChatRoom");
+});
+
+Route::get("/d",function (){
+    return view("ChatRooms/Drawing");
+});
+
+Route::get("/room",function (){
+    return view("ChatRooms/Room");
+});
+
 Route::prefix('/student')->group(function () {
     Route::get('/', [DashBoard::class, 'index'])->name('studentDashboard');
     Route::get("/session", [SessionController::class, "index"]);
@@ -89,3 +101,5 @@ Route::prefix('/room')->group(function () {
     Route::get("/teacher", [RoomController::class, "teacherLobby"])->name("teacherLobby")->middleware("auth:teacher");
     Route::post("/student/joinRoom", [RoomController::class, "studentJoinRoom"])->name("studentJoinRoom")->middleware("auth:student");
 });
+
+

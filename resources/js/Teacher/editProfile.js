@@ -3,7 +3,7 @@ window.Vue = require("vue").default;
 const axios = require("axios").default;
 
 const app = new Vue({
-    el:"#editProfile",
+    el:"#editProfileMainSection",
     data: {
         teacher: {},
         socialMedia:{},

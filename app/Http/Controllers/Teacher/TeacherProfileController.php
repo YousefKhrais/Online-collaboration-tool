@@ -55,6 +55,7 @@ class TeacherProfileController extends Controller
         ]);
         return $data;
     }
+
     public function fetchTeacherSocialMedia(Request $request){
         $teacher  = Teacher::find($request->input("teacher_id"));
 
@@ -67,6 +68,7 @@ class TeacherProfileController extends Controller
 
         return json_encode(["social_media"=>$socialMedia]);
     }
+
     public function updateTeacher(Request $request){
 
         $rules =[
@@ -93,8 +95,10 @@ class TeacherProfileController extends Controller
 
         return $teacher;
     }
+
     public function editProfile(Request $request){
         $teacher_id = auth("teacher")->user()->id;
         return view("Teacher/EditProfile",["teacher_id"=>$teacher_id]);
     }
+
 }
