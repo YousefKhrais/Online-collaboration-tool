@@ -35,13 +35,25 @@ class RoomController extends Controller
 
     public function studentJoinRoom(Request $request){
         $room_id = $request->post("course_id");
-        return $room_id;
         $student = Student::find(auth("student")->user()->id);
-//        return $student;
+
         return view("ChatRooms/ChatRoom" ,
             ["roomID"=> $room_id ,
               "name"=>$student->getFullName()
             ]);
+
+    }
+
+
+    public function teacherJoinRoom(Request $request){
+        $room_id = $request->post("course_id");
+        $teacher = Teacher::find(auth("teacher")->user()->id);
+
+        return view("ChatRooms/ChatRoom" ,
+            ["roomID"=> $room_id ,
+                "name"=>$teacher->getFullName()
+            ]);
+
     }
 
 }

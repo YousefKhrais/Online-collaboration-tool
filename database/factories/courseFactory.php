@@ -22,13 +22,13 @@ class courseFactory extends Factory
         return [
             "title"=>$this->faker->title,
             "description"=>$this->faker->sentence,
-            'image_link' => 'https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png',
+            'image_link'=>"https://www.bing.com/th?id=OIP.rrIexnGdFPT4c3MHAzoFgwHaE8&w=152&h=101&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2",
             "price"=>$this->faker->numberBetween(100,1000),
             "num_of_hours"=>$this->faker->numberBetween(200,1521),
             "students_count"=>0,
             "teacher_id"=>$this->faker->numberBetween(1,Teacher::all()->count()),
             "category_id"=>$this->faker->numberBetween(1,Category::all()->count()),
         ];
-        
+
     }
 }

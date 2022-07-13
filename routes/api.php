@@ -47,7 +47,6 @@ Route::get("teacher/fetchTeacher",[
 ]);
 
 
-
 Route::get("teacher/fetchTeacherSocialMedia",[
     \App\Http\Controllers\Teacher\TeacherProfileController::class,"fetchTeacherSocialMedia"
 ]);

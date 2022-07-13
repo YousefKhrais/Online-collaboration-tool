@@ -16,9 +16,11 @@
             </div>
 
             <div class="container" data-aos="fade-up">
+
                 <div class="section-title">
                     <h2>My Courses</h2>
                 </div>
+
                 @foreach($teacher->courses->chunk(3) as $courses_row)
                     <div class="row course-set courses__row">
                         @foreach($courses_row as $course)
@@ -35,14 +37,17 @@
                                         </h3>
                                         <p class="text-break">{{$course->description}}</p>
                                         <div class="trainer d-flex justify-content-between align-items-center">
-                                            <div class="d-flex align-items-center">
-                                                <a class="btn btn-sm btn-success" href="{{route("teacherLobby")}}">Course
-                                                    Room</a>
-                                            </div>
+                                            <form  method="post" action="{{route("teacherJoinRoom")}}" class="d-flex align-items-center">
+                                              @csrf
+                                                <input type="hidden" name="course_id" value="{{$course->id}}">
+                                                <input class="btn btn-sm btn-success"
+                                                      value="Course Room" type="submit"/>
+                                            </form>
                                             <div class="trainer-rank d-flex align-items-center">
                                                 <i class="bx bx-user"></i>&nbsp;{{$course->getStudentsCount()}}
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>

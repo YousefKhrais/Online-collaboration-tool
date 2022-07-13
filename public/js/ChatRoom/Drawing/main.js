@@ -328,10 +328,8 @@ var isLoggedIn = false;
 var client = agora_rtm_sdk__WEBPACK_IMPORTED_MODULE_0___default().createInstance(agoraAppId, {
   enableLogUpload: false
 });
-var channelName = document.getElementById("roomID");
-var accountName = String(Math.floor(Math.random() * 100)); // Constants
-// Color Variable
-
+var channelName = document.getElementById("roomID").value;
+var accountName = String(Math.floor(Math.random() * 100));
 var color = "#000000"; // Set up the canvas
 
 var canvas = document.getElementById("whiteboard-canvas");
@@ -342,7 +340,7 @@ ctx.canvas.height = window.innerHeight * dpr;
 ctx.strokeStyle = color;
 ctx.lineWidth = 4;
 var dataUrl = canvas.toDataURL();
-var AppID = ""; // Get the position of the mouse relative to the canvas
+var AppID = "";
 
 function getMousePos(canvasDom, mouseEvent) {
   var rect = canvasDom.getBoundingClientRect();
@@ -357,8 +355,7 @@ window.requestAnimFrame = function (callback) {
   return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimaitonFrame || function (callback) {
     window.setTimeout(callback, 1000 / 60);
   };
-}(); // Draw to the canvas
-
+}();
 
 function renderCanvas() {
   if (drawing) {
@@ -369,13 +366,12 @@ function renderCanvas() {
     lastPos = mousePos;
     ctx.closePath();
   }
-} // Allow for animation
-
+}
 
 (function drawLoop() {
   requestAnimFrame(drawLoop);
   renderCanvas();
-})(); // Color picker stroke color
+})(); // Color picker
 
 
 function changeColor() {
@@ -399,8 +395,7 @@ function startErasing() {
   ctx.strokeStyle = "#FFFFFF";
   ctx.lineWidth = 50;
   erasing = true;
-} // Set up mouse events for drawing
-
+}
 
 var drawing = false;
 var erasing = false;
@@ -419,8 +414,7 @@ canvas.addEventListener("mousedown", function (e) {
 }, false);
 canvas.addEventListener("mouseup", function (e) {
   drawing = false;
-}, false); // Set up touch events for mobile, etc
-
+}, false);
 canvas.addEventListener("touchstart", function (e) {
   mousePos = getTouchPos(canvas, e);
   var touch = e.touches[0];
@@ -466,13 +460,8 @@ document.body.addEventListener("touchmove", function (e) {
   if (e.target == canvas) {
     e.preventDefault();
   }
-}, false); // Auto Init MaterializeCSS
-
-M.AutoInit(); // RtmClient
-// Form Click Event
-// $("#joinChannelBtn").click(function () {
-// Login
-
+}, false);
+M.AutoInit();
 client.login({
   uid: accountName
 }).then(function () {
@@ -481,12 +470,6 @@ client.login({
 
   var channel = client.createChannel(channelName);
   channel.join().then(function () {
-    // console.log('AgoraRTM client channel join success.');
-    // $("#joinChannelBtn").prop("disabled", true);
-    // // Close Channel Join Modal
-    // $("#joinChannelModal").modal('close');
-    // Send Channel Message
-    // Mouse Down
     canvas.addEventListener("mousedown", function () {
       // Mouse Move
       canvas.addEventListener("mousemove", function () {
@@ -527,8 +510,7 @@ client.login({
     channel.on('ChannelMessage', function (_ref, senderId) {
       var text = _ref.text;
       console.log("The message is: " + text + " by " + senderId);
-      var parsedFinalNow = JSON.parse(text); // Parsed Coordinates
-      // console.log(parsedFinalNow);
+      var parsedFinalNow = JSON.parse(text);
 
       if (parsedFinalNow.drawing == true) {
         if (parsedFinalNow.erasing == true) {

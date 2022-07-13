@@ -52,6 +52,7 @@ class CoursesController extends Controller
             "course" => $course,
             "is_registered" => $is_registered
         ]);
+
     }
 
     public function getTeacherImage(Request $request)

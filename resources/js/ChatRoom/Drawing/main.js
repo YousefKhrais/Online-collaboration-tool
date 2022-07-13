@@ -5,7 +5,11 @@ let  agoraAppId = "ac979d7c604741cb9092d472236c7a4d";
 var isLoggedIn = false;
 
 const client = AgoraRTM.createInstance(agoraAppId, { enableLogUpload: false });
-let channelName =document.getElementById("roomID");
+let channelName =document.getElementById("roomID").value;
+
+
+
+
 let accountName = String(Math.floor(Math.random()*100));
 
 var color = "#000000";
