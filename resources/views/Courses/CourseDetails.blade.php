@@ -1,5 +1,4 @@
 @extends("layouts.Home")
-
 @section("courseDetails")
 
     <main id="main">

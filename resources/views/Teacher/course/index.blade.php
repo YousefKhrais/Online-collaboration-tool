@@ -11,16 +11,18 @@
                             <li class="breadcrumb-item" aria-current="page">Teacher</li>
                             <li class="breadcrumb-item active" aria-current="page">My Courses</li>
                         </ol>
+
+                        <a class="fab d-flex align-items-center justify-content-center"
+                           data-target="#addCourseModal" data-toggle="modal" href="#">
+                            <i class="bi bi-plus"></i>
+                        </a>
                     </nav>
                 </div>
             </div>
-
             <div class="container" data-aos="fade-up">
-
                 <div class="section-title">
                     <h2>My Courses</h2>
                 </div>
-
                 @foreach($teacher->courses->chunk(3) as $courses_row)
                     <div class="row course-set courses__row">
                         @foreach($courses_row as $course)
@@ -37,17 +39,14 @@
                                         </h3>
                                         <p class="text-break">{{$course->description}}</p>
                                         <div class="trainer d-flex justify-content-between align-items-center">
-                                            <form  method="post" action="{{route("teacherJoinRoom")}}" class="d-flex align-items-center">
-                                              @csrf
-                                                <input type="hidden" name="course_id" value="{{$course->id}}">
-                                                <input class="btn btn-sm btn-success"
-                                                      value="Course Room" type="submit"/>
-                                            </form>
+                                            <div class="d-flex align-items-center">
+                                                <a class="btn btn-sm btn-success" href="{{route("teacherLobby")}}">Course
+                                                    Room</a>
+                                            </div>
                                             <div class="trainer-rank d-flex align-items-center">
                                                 <i class="bx bx-user"></i>&nbsp;{{$course->getStudentsCount()}}
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -58,4 +57,57 @@
             </div>
         </div>
     </section>
+
+    <div class="modal fade" id="addCourseModal">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Request To Add New Course</h5>
+                    <button aria-label="Close" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <form action="{{route('request.store')}}" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group p-1">
+                            <label class="form-label">Course Title</label>
+                            <input class="form-control" placeholder="Enter Course Title" type="text"
+                                   name="title">
+                        </div>
+                        <div class="form-group p-1">
+                            <label class="form-label">Number Of Hours (Course Credit)</label>
+                            <input class="form-control" placeholder="Enter Course Credit" type="number"
+                                   name="credit">
+                        </div>
+                        <div class="form-group p-1">
+                            <label class="form-label">Course Price</label>
+                            <input class="form-control" placeholder="Enter Course Price" type="number"
+                                   name="price">
+                        </div>
+                        <div class="form-group p-1">
+                            <label class="form-label">Category</label>
+                            <select class="form-control" name="category_id">
+                                <option value="0" selected>Select Category</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->title}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group p-1">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control" name="description"
+                                      placeholder="Course Description"
+                                      rows="5"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-outline-primary" data-dismiss="modal">Close</button>
+                        <button class="btn btn-success" type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 @endsection

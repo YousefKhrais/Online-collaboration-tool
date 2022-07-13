@@ -14,6 +14,7 @@ use App\Http\Controllers\Student\StudentCoursesController;
 use App\Http\Controllers\Teacher\TeacherProfileController;
 use App\Http\Controllers\Teacher\TeachersController;
 use App\Http\Controllers\Teacher\TeacherCoursesController;
+use App\Http\Controllers\Requests\RequestsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,15 +34,15 @@ Route::get('/trainers', [TeachersController::class, "index"])->name("trainers");
 Route::get('/pricing', [HomeController::class, "pricing"])->name("pricing");
 Route::get('/contact', [HomeController::class, "contact"])->name("contact");
 
-Route::get("/xx",function (){
+Route::get("/xx", function () {
     return view("ChatRooms/ChatRoom");
 });
 
-Route::get("/d",function (){
+Route::get("/d", function () {
     return view("ChatRooms/Drawing");
 });
 
-Route::get("/room",function (){
+Route::get("/room", function () {
     return view("ChatRooms/Room");
 });
 
@@ -105,3 +106,7 @@ Route::prefix('/room')->group(function () {
     Route::post("/teacher/joinRoom", [RoomController::class, "teacherJoinRoom"])->name("teacherJoinRoom")->middleware("auth:teacher");
 });
 
+Route::prefix('/request')->group(function () {
+    Route::get('/', [RequestsController::class, 'index'])->middleware(['auth'])->name('requests');
+    Route::post('/store', [RequestsController::class, 'store'])->name('request.store');
+});
