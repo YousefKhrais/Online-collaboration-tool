@@ -8,50 +8,50 @@
     <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet'>
     <link href='https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css' rel='stylesheet'>
     <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-    <link  href="{{asset("css/ChatRoom/chatRoomStyle.css")}}" type="text/css" rel="stylesheet"/>
+    <link href="{{asset("css/ChatRoom/chatRoomStyle.css")}}" type="text/css" rel="stylesheet"/>
 
-{{--room assests--}}
+    {{--room assests--}}
     <link rel='stylesheet' type='text/css' media='screen' href='{{mix("css/ChatRoom/main.css")}}'>
     <link rel='stylesheet' type='text/css' media='screen' href='{{mix("css/ChatRoom/room.css")}}'>
-{{--end room assests--}}
+    {{--end room assests--}}
 
-{{--    drawing assets--}}
+    {{--    drawing assets--}}
 
-{{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" defer>--}}
+    {{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" defer>--}}
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-{{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">--}}
+    {{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">--}}
     <link rel="stylesheet" href="{{asset("css/ChatRoom/Drawing/style.css")}}">
 </head>
 
 {{--<body id="snippet-body">--}}
 <body id="body-pd">
 {{--<div i>--}}
-    <div id="chatRoomPage" style="padding: 0px">
+<div id="chatRoomPage" style="padding: 0px">
 
-        <input type="hidden" id="name" value="{{$name}}">
-        <input type="hidden" id="roomID" value="{{$roomID}}">
+    <input type="hidden" id="name" value="{{$name}}">
+    <input type="hidden" id="roomID" value="{{$roomID}}">
 
     <header class="header" id="header">
-        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-        <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
+        <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
+        <div class="header_img"><img src="https://i.imgur.com/hczKIze.jpg" alt=""></div>
     </header>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav ">
             <div>
 
-                <a href="#"  class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i>
-                    <span class="nav_logo-name">BBBootstrap</span>
+                <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i>
+                    <span class="nav_logo-name">Course Room</span>
                 </a>
 
                 <div class="nav_list " role="tablist">
 
-                    <a  @click="showVideo" id="video_btn" href="#" class="nav_link ">
+                    <a @click="showVideo" id="video_btn" href="#" class="nav_link ">
                         <i class='bx bx-grid-alt nav_icon'></i>
                         <span class="nav_name">Chat Room</span>
                     </a>
 
-                    <a  @click="showIDE"  id="" href="#" class="nav_link" >
+                    <a @click="showIDE" id="" href="#" class="nav_link">
                         <i class='bx bx-user nav_icon'></i>
                         <span class="nav_name">IDE</span>
                     </a>
@@ -60,50 +60,37 @@
                         <i class='bx bx-message-square-detail nav_icon'>
                         </i> <span class="nav_name">Drawing Pane</span>
                     </a>
-
-                    <a href="#" class="nav_link">
-                        <i class='bx bx-bookmark nav_icon'>
-                        </i> <span class="nav_name">Editor</span>
-                    </a>
-
-                    <a href="#" class="nav_link" > <i class='bx bx-folder nav_icon'>
-                        </i> <span class="nav_name">Files</span>
-                    </a>
-
-                    <a href="#" class="nav_link">
-                        <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
-                        <span class="nav_name">Stats</span>
-                    </a>
                 </div>
             </div>
 
-            <a href="#" class="nav_link">
+            <a href="{{route("home")}}" class="nav_link">
                 <i class='bx bx-log-out nav_icon'></i>
-                <span class="nav_name">SignOut</span>
-            </a>room
-
+                <span class="nav_name">Leave Room</span>
+            </a>
         </nav>
     </div>
 
-        <div  id="roomVideoPage" style="width: 100%; padding: 0px; display:block;"  id="chatBlock">
-            @include("ChatRooms.Room")
-        </div>
-
-        <div  id="chePage" style="width:95%; margin-left:5%; margin-top: 100px; padding-bottom:56.25%; display:none;  position:relative;">
-            <iframe src="https://che-eclipse-che.yousefkhrais.site" style="position:absolute; top:0px; left:0px;
-                         width:100%; height:100%; border: none; overflow: hidden;"></iframe>
-        </div>
-
-        <div  id="drawingPage" style="width:95%; margin-left:3%; margin-top: 100px;
-        display:none;  position:relative; ">
-            @include("ChatRooms.Drawing")
-        </div>
+    <div id="roomVideoPage" style="width: 100%; padding: 0px; display:block;" id="chatBlock">
+        @include("ChatRooms.Room")
     </div>
+
+    <div id="chePage"
+         style="width:95%; margin-left:5%; margin-top: 100px; padding-bottom:56.25%; display:none;  position:relative;">
+        <iframe src="https://che-eclipse-che.yousefkhrais.site" style="position:absolute; top:0px; left:0px;
+                         width:100%; height:100%; border: none; overflow: hidden;"></iframe>
+    </div>
+
+    <div id="drawingPage" style="width:95%; margin-left:3%; margin-top: 100px;
+        display:none;  position:relative; ">
+        @include("ChatRooms.Drawing")
+    </div>
+</div>
 
 </body>
 
 <script src="{{asset("js/ChatRoom/manager.js")}}"></script>
-<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script>
+<script type='text/javascript'
+        src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script>
 <script type='text/javascript' src="{{asset("/js/ChatRoom/main.js")}}"></script>
 
 <script type="text/javascript" src="{{mix('js/ChatRoom/room.js')}}"></script>
