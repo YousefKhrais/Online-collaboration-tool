@@ -86,15 +86,11 @@
                                 </div>
 
                                 @auth("teacher")
-                                    <form class="row  d-flex justify-content-center " action="{{route("studentLobby")}}"
-                                          method="get">
+                                    <form class="row d-flex justify-content-center" method="post" action="{{route("teacherJoinRoom")}}">
                                         @csrf
-                                        <input type="hidden" :value="course_id" name="course_id">
-                                        <input type="hidden" :value="course.teacher_id" name="teacher_id">
-
+                                        <input name="course_id" type="hidden" value="{{$course->id}}">
                                         <input value="Course Room" type="submit"
                                                class="btn btn-outline-success col-4 m-3">
-
                                         <a class="btn btn-outline-success col-4 m-3" href="{{ URL('teacher/courses/settings/'.$course->id) }}"><i class="fas fa-folder"></i>Course Settings</a>
                                     </form>
                                 @endauth

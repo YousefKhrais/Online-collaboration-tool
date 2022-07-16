@@ -43,12 +43,11 @@
                                         </h3>
                                         <p class="text-break">{{$course->description}}</p>
                                         <div class="trainer d-flex justify-content-between align-items-center">
-                                            <form  method="post" action="{{route("teacherJoinRoom")}}" class="d-flex align-items-center">
-
-                                               @csrf
+                                            <form method="post" action="{{route("teacherJoinRoom")}}"
+                                                  class="d-flex align-items-center">
+                                                @csrf
                                                 <input name="course_id" type="hidden" value="{{$course->id}}">
-                                                <input  type="submit" value="Go To Room"
-                                                        class="btn btn-sm btn-success">
+                                                <input type="submit" value="Course Room" class="btn btn-sm btn-success">
                                             </form>
                                             <div class="trainer-rank d-flex align-items-center">
                                                 <i class="bx bx-user"></i>&nbsp;{{$course->getStudentsCount()}}

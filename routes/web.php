@@ -33,15 +33,15 @@ Route::get('/trainers', [TeachersController::class, "index"])->name("trainers");
 Route::get('/pricing', [HomeController::class, "pricing"])->name("pricing");
 Route::get('/contact', [HomeController::class, "contact"])->name("contact");
 
-Route::get("/xx",function (){
+Route::get("/xx", function () {
     return view("ChatRooms/ChatRoom");
 });
 
-Route::get("/d",function (){
+Route::get("/d", function () {
     return view("ChatRooms/Drawing");
 });
 
-Route::get("/room",function (){
+Route::get("/room", function () {
     return view("ChatRooms/Room");
 });
 
@@ -70,15 +70,12 @@ Route::prefix('/student')->group(function () {
 
 Route::prefix('/teacher')->group(function () {
     Route::prefix('/courses')->group(function () {
-
-        Route::get("/", [TeacherCoursesController::class,
-            "index"])->name("teacher_courses")->middleware("auth:teacher");
-
-        Route::get("/view/{id}", [TeacherCoursesController::class, "view"])
-            ->middleware("auth:teacher")->name("showTeacherCourse");
-
-        Route::post("/enroll/{id}", [TeacherCoursesController::class, "enroll"])
-            ->middleware("auth:teacher");
+        Route::get("/", [TeacherCoursesController::class, "index"])->name("teacher_courses")->middleware("auth:teacher");
+        Route::get("/view/{id}", [TeacherCoursesController::class, "view"])->middleware("auth:teacher")->name("showTeacherCourse");
+        Route::post("/enroll/{id}", [TeacherCoursesController::class, "enroll"])->middleware("auth:teacher");
+        Route::get('/settings/{id}', [TeacherCoursesController::class, 'courseSettings'])->middleware("auth:teacher");
+        Route::post('/update/{id}', [TeacherCoursesController::class, 'update'])->middleware("auth:teacher");
+        Route::post('/unenroll/{id}', [TeacherCoursesController::class, 'unenroll'])->middleware("auth:teacher");
     });
 
     Route::prefix('/profile')->group(function () {

@@ -21,7 +21,7 @@ class CreateTeachersTable extends Migration
 
             $table->string('first_name')->nullable(false);
             $table->string('last_name')->nullable(false);
-            $table->integer('phone_number');
+            $table->string('phone_number');
 
             $table->date('date_of_birth');
             $table->boolean('status')->default(true);

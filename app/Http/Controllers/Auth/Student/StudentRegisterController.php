@@ -26,6 +26,6 @@ class StudentRegisterController extends Controller
     public function register(StudentRegistrationRequest $request)
     {
         $request->register();
-        return redirect("/student");
+        return redirect()->route("home");
     }
 }

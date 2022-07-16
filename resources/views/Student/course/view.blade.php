@@ -81,11 +81,10 @@
                                 </div>
 
                                 @auth("student")
-                                    <form class="row  d-flex justify-content-center " action="{{route("studentLobby")}}"
-                                          method="get">
+                                    <form class="row d-flex justify-content-center"
+                                          action="{{route("studentJoinRoom")}}" method="post">
                                         @csrf
-                                        {{--                                        <input type="hidden" :value="course_id" name="course_id">--}}
-                                        {{--                                        <input type="hidden" :value="course.teacher_id" name="teacher_id">--}}
+                                        <input type="hidden" name="course_id" value="{{$course->id}}">
                                         <input value="Join Room" type="submit" class="btn btn-outline-success col-6">
                                     </form>
                                 @endauth

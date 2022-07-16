@@ -19,7 +19,7 @@ class CreateStudentsTable extends Migration
             $table->string('password');
             $table->string('first_name');
             $table->string('last_name');
-            $table->integer('phone_number');
+            $table->string('phone_number');
             $table->date('date_of_birth')->nullable(true);;
             $table->boolean('status')->default(true);
             $table->boolean('gender');
