@@ -95,8 +95,7 @@
                                         <input value="Course Room" type="submit"
                                                class="btn btn-outline-success col-4 m-3">
 
-                                        <a class="btn btn-outline-success col-4 m-3" data-target="#enrollStudentModal"
-                                           data-toggle="modal" href="#"><i class="fas fa-folder"></i>Enroll Student</a>
+                                        <a class="btn btn-outline-success col-4 m-3" href="{{ URL('teacher/courses/settings/'.$course->id) }}"><i class="fas fa-folder"></i>Course Settings</a>
                                     </form>
                                 @endauth
 
@@ -221,44 +220,4 @@
         </section>
 
     </section>
-
-    <div class="modal fade" id="enrollStudentModal">
-        <div class="modal-dialog modal-md" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Enroll Student</h5>
-                    <button aria-label="Close" class="close" data-dismiss="modal">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <form action="{{ URL('teacher/courses/enroll/'.$course->id) }}" method="POST">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label class="form-label">Course Title</label>
-                            <input class="form-control" placeholder="Course Title" value="{{$course->title}}"
-                                   type="text" disabled>
-                        </div>
-                        </br>
-                        <div class="form-group">
-                            <label class="form-label">Select Student</label>
-                            <select class="form-control" multiple="multiple" name="student_id[]">
-                                @foreach ($students as $student)
-                                    @if(!$course->isStudentEnrolled($student))
-                                        <option value="{{$student->id}}">{{$student->id}}
-                                            - {{$student->getFullName()}}</option>
-                                    @endif
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-outline-primary" data-dismiss="modal">Close</button>
-                        <button class="btn btn-success" type="submit">Submit</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
 @endsection

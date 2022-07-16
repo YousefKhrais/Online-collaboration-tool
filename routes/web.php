@@ -73,7 +73,10 @@ Route::prefix('/teacher')->group(function () {
     Route::prefix('/courses')->group(function () {
         Route::get("/", [TeacherCoursesController::class, "index"])->name("teacher_courses")->middleware("auth:teacher");
         Route::get("/view/{id}", [TeacherCoursesController::class, "view"])->middleware("auth:teacher");
+        Route::get('/settings/{id}', [TeacherCoursesController::class, 'courseSettings'])->middleware("auth:teacher");
+        Route::post('/update/{id}', [TeacherCoursesController::class, 'update'])->middleware("auth:teacher");
         Route::post("/enroll/{id}", [TeacherCoursesController::class, "enroll"])->middleware("auth:teacher");
+        Route::post('/unenroll/{id}', [TeacherCoursesController::class, 'unenroll'])->middleware("auth:teacher");
     });
 
     Route::prefix('/profile')->group(function () {
@@ -105,13 +108,7 @@ Route::prefix('/room')->group(function () {
     Route::post("/teacher/joinRoom", [RoomController::class, "teacherJoinRoom"])->name("teacherJoinRoom")->middleware("auth:teacher");
 });
 
-<<<<<<< HEAD
-
-
-
-=======
 Route::prefix('/request')->group(function () {
     Route::get('/', [RequestsController::class, 'index'])->middleware(['auth'])->name('requests');
     Route::post('/store', [RequestsController::class, 'store'])->name('request.store');
 });
->>>>>>> origin/main
