@@ -67,18 +67,18 @@
 
                             </div>
 
-                            @auth("student")
-                                @if($is_registered===true)
-                                    @include("Courses.SubViews.CourseRoomForm")
-                                @else
-                                    <form class="row  d-flex justify-content-center "
-                                          action="{{route("entrollCourse")}}" method="post">
-                                        @csrf
-                                        <input type="hidden" value="{{$course->id}}" name="course_id">
-                                        <input value="Enroll" type="submit" class="btn btn-outline-success col-6">
-                                    </form>
-                                @endif
-                            @endauth
+{{--                            @auth("student")--}}
+{{--                                @if($is_registered===true)--}}
+{{--                                    @include("Courses.SubViews.CourseRoomForm")--}}
+{{--                                @else--}}
+{{--                                    <form class="row  d-flex justify-content-center "--}}
+{{--                                          action="{{route("entrollCourse")}}" method="post">--}}
+{{--                                        @csrf--}}
+{{--                                        <input type="hidden" value="{{$course->id}}" name="course_id">--}}
+{{--                                        <input value="Enroll" type="submit" class="btn btn-outline-success col-6">--}}
+{{--                                    </form>--}}
+{{--                                @endif--}}
+{{--                            @endauth--}}
 
                         </div>
                     </div>
