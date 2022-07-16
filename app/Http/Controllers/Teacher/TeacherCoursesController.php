@@ -15,15 +15,18 @@ class TeacherCoursesController extends Controller
 
     public function index()
     {
+
         $teacher = Teacher::with('courses')
             ->select('*')
             ->where('id', auth("teacher")->user()->id)
             ->first();
 
-        return view('Teacher.course.index', array(
-            'teacher' => $teacher,
-            'categories' => Category::select('*')->get(),
-        ));
+        return view("Teacher/course/index",
+           [ 'teacher' => $teacher,
+            'categories' => Category::select('*')->get()
+           ]
+        );
+
     }
 
     public function view($id)

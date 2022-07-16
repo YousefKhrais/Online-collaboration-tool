@@ -97,6 +97,7 @@
                 </section>
             </div>
         </div>
+
         <section id="cource-details-tabs" class="cource-details-tabs">
             <div class="container" data-aos="fade-up">
                 <div class="row">

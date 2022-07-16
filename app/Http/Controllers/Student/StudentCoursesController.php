@@ -38,10 +38,11 @@ class StudentCoursesController extends Controller
 
         if (!$course->students->contains($student->id))
             return redirect()->back()->withErrors(['You are not enrolled in this course']);
-        
+
         return view('Student.course.view', array(
             'course' => $course,
             'student' => $student
         ));
     }
+
 }

@@ -1,7 +1,10 @@
 <li class="dropdown">
     <a href="#">
-        <span><img src="{{auth("teacher")->user()->image_link}}"
-                   style="height:30px;  width: 30px; border-radius: 50%;"/> {{auth("teacher")->user()->getFullName()}}</span>
+        <span>
+            <img src="{{auth("teacher")->user()->image_link}}"
+                   style="height:30px;  width: 30px; border-radius: 50%;"/>
+                    {{auth("teacher")->user()->getFullName()}}
+        </span>
         <i class="bi bi-chevron-down"></i>
     </a>
     <ul>

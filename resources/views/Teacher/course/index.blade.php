@@ -16,6 +16,7 @@
                            data-target="#addCourseModal" data-toggle="modal" href="#">
                             <i class="bi bi-plus"></i>
                         </a>
+
                     </nav>
                 </div>
             </div>
@@ -35,14 +36,20 @@
                                             <h4 class="bg-info">{{$course->num_of_hours}} Hours</h4>
                                         </div>
                                         <h3>
-                                            <a href="{{ URL('teacher/courses/view/'.$course->id) }}">{{$course->title}}</a>
+                                            <a href="{{ URL('teacher/courses/view/'.$course->id) }}">
+                                                {{$course->title}}
+                                            </a>
+
                                         </h3>
                                         <p class="text-break">{{$course->description}}</p>
                                         <div class="trainer d-flex justify-content-between align-items-center">
-                                            <div class="d-flex align-items-center">
-                                                <a class="btn btn-sm btn-success" href="{{route("teacherLobby")}}">Course
-                                                    Room</a>
-                                            </div>
+                                            <form  method="post" action="{{route("teacherJoinRoom")}}" class="d-flex align-items-center">
+
+                                               @csrf
+                                                <input name="course_id" type="hidden" value="{{$course->id}}">
+                                                <input  type="submit" value="Go To Room"
+                                                        class="btn btn-sm btn-success">
+                                            </form>
                                             <div class="trainer-rank d-flex align-items-center">
                                                 <i class="bx bx-user"></i>&nbsp;{{$course->getStudentsCount()}}
                                             </div>
@@ -67,7 +74,7 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <form action="{{route('request.store')}}" method="POST">
+                <form method="get">
                     @csrf
                     <div class="modal-body">
                         <div class="form-group p-1">
