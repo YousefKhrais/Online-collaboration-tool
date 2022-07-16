@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Course;
 use App\Models\Student;
 use App\Models\Teacher;
@@ -19,7 +20,10 @@ class TeacherCoursesController extends Controller
             ->where('id', auth("teacher")->user()->id)
             ->first();
 
-        return view("Teacher.course.index", ["teacher" => $teacher]);
+        return view('Teacher.course.index', array(
+            'teacher' => $teacher,
+            'categories' => Category::select('*')->get(),
+        ));
     }
 
     public function view($id)
