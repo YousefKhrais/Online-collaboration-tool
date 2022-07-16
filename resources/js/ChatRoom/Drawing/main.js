@@ -7,9 +7,6 @@ var isLoggedIn = false;
 const client = AgoraRTM.createInstance(agoraAppId, { enableLogUpload: false });
 let channelName =document.getElementById("roomID").value;
 
-
-
-
 let accountName = String(Math.floor(Math.random()*100));
 
 var color = "#000000";

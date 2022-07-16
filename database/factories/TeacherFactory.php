@@ -38,7 +38,7 @@ class TeacherFactory extends Factory
 
             'courses_count' => 0,
             'requests_count' => 0,
-
+            
             'interests'=>json_encode(['1'=>'ai' , '2'=>'data science']),
 
             'remember_token' => Str::random(10)

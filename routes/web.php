@@ -97,11 +97,13 @@ Route::prefix('/courses')->group(function () {
     Route::post("/entrollCourse", [CoursesController::class, "entroll"])->name("entrollCourse")->middleware("auth:student");
 });
 
-
 Route::prefix('/room')->group(function () {
     Route::get("/student", [RoomController::class, "studentLobby"])->name("studentLobby")->middleware("auth:student");
     Route::get("/teacher", [RoomController::class, "teacherLobby"])->name("teacherLobby")->middleware("auth:teacher");
     Route::post("/student/joinRoom", [RoomController::class, "studentJoinRoom"])->name("studentJoinRoom")->middleware("auth:student");
     Route::post("/teacher/joinRoom", [RoomController::class, "teacherJoinRoom"])->name("teacherJoinRoom")->middleware("auth:teacher");
 });
+
+
+
 
