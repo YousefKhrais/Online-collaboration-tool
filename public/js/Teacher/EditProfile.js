@@ -14481,7 +14481,7 @@ window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js
 var axios = (__webpack_require__(/*! axios */ "./node_modules/axios/index.js")["default"]);
 
 var app = new Vue({
-  el: "#editProfile",
+  el: "#editProfileMainSection",
   data: {
     teacher: {},
     socialMedia: {},

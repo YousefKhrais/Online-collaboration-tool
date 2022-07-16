@@ -52,7 +52,6 @@
                             Time Remind :
                             <span class="badge badge-primary badge-pill text-primary"> 1:11</span>
                         </li>
-
                     </ul>
 
                 </div>
@@ -61,15 +60,15 @@
                     <form class="card-link row justify-content-center" method="post"
                           action="{{route("studentJoinRoom")}}">
                         @csrf
-                        <input type="hidden" name="student_id" value="{{$course_record['student_id']}}"/>
+                        <input type="hidden" name="student_id" name="student_id" value="{{$course_record['student_id']}}"/>
                         <input type="hidden" name="teacher_id" value="{{$course_record['teacher_id']}}"/>
-                        <input type="hidden" name="course_id" value="{{$course_record['course_id']}}"/>
+                        <input type="hidden" name="course_id" name="course_id" value="{{$course_record['course_id']}}"/>
 
                         <button class="btn btn-outline-success col-auto">
                             Join Room
                         </button>
-
                     </form>
+
                 </div>
             </div>
         </div>

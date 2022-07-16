@@ -1,0 +1,29 @@
+#editProfileMainSection{
+    padding: 0px;
+    background-color: #f9f9f9;
+    margin-top: 30px;
+}
+#mainInfo{
+
+    width: 100%;
+    margin-top: 50px;
+}
+
+#otherInfo{
+    width: 100%;
+    margin-top: 50px;
+}
+#mainInfoHeader , #otherInfoHeader{
+    padding: 0px;
+    justify-content: center;
+
+}
+
+#mainInfoTitle , #otherInfoTitle{
+
+    margin-top: 10px;
+    font-size: 30px;
+    color: lightseagreen;
+
+}
+

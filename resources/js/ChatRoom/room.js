@@ -75,14 +75,18 @@ let hideDisplayFrame= ()=>{
 }
 
 for(let i =0; videoFrames.length>i;i++){
-  videoFrames[i].addEventListener('click',expandVideoFrame);
+    videoFrames[i].addEventListener('click',expandVideoFrame);
 }
 
 let setUserID_Display_Frame=(value)=>{
     userIDInDisplayFrame=value;
 }
 
+let getUserID_Display_frame=()=>{
+    return userIDInDisplayFrame;
+}
 displayFrame.addEventListener("click",hideDisplayFrame);
 
 
-export {expandVideoFrame,hideDisplayFrame,displayFrame,videoFrames,setUserID_Display_Frame};
+export {expandVideoFrame,hideDisplayFrame,displayFrame,videoFrames
+    ,setUserID_Display_Frame,getUserID_Display_frame};

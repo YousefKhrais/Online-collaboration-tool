@@ -41,6 +41,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "displayFrame": () => (/* binding */ displayFrame),
 /* harmony export */   "expandVideoFrame": () => (/* binding */ expandVideoFrame),
+/* harmony export */   "getUserID_Display_frame": () => (/* binding */ getUserID_Display_frame),
 /* harmony export */   "hideDisplayFrame": () => (/* binding */ hideDisplayFrame),
 /* harmony export */   "setUserID_Display_Frame": () => (/* binding */ setUserID_Display_Frame),
 /* harmony export */   "videoFrames": () => (/* binding */ videoFrames)
@@ -115,6 +116,10 @@ for (var i = 0; videoFrames.length > i; i++) {
 
 var setUserID_Display_Frame = function setUserID_Display_Frame(value) {
   userIDInDisplayFrame = value;
+};
+
+var getUserID_Display_frame = function getUserID_Display_frame() {
+  return userIDInDisplayFrame;
 };
 
 displayFrame.addEventListener("click", hideDisplayFrame);

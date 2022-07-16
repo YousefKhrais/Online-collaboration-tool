@@ -10,10 +10,17 @@
     "/js/Student/editProfile.js": "/js/Student/editProfile.js",
     "/js/Teacher/TeacherProfile.js": "/js/Teacher/TeacherProfile.js",
     "/js/Teacher/EditProfile.js": "/js/Teacher/EditProfile.js",
+    "/js/ChatRoom/main.js": "/js/ChatRoom/main.js",
+    "/js/ChatRoom/manager.js": "/js/ChatRoom/manager.js",
+    "/js/ChatRoom/room_rtm.js": "/js/ChatRoom/room_rtm.js",
+    "/js/ChatRoom/Drawing/main.js": "/js/ChatRoom/Drawing/main.js",
     "/css/Categories/coursesList.css": "/css/Categories/coursesList.css",
     "/css/ChatRoom/main.css": "/css/ChatRoom/main.css",
     "/css/app.css": "/css/app.css",
+    "/css/ChatRoom/chatRoomStyle.css": "/css/ChatRoom/chatRoomStyle.css",
     "/css/ChatRoom/room.css": "/css/ChatRoom/room.css",
+    "/css/ChatRoom/Drawing/style.css": "/css/ChatRoom/Drawing/style.css",
+    "/css/ChatRoom/editProfile.css": "/css/ChatRoom/editProfile.css",
     "/css/Student/editProfile.css": "/css/Student/editProfile.css",
     "/css/Student/loginPage.css": "/css/Student/loginPage.css"
 }

@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 
 class CoursesController extends Controller
 {
+
     public function index()
     {
         $courses = Course::with('students')
@@ -51,6 +52,7 @@ class CoursesController extends Controller
             "course" => $course,
             "is_registered" => $is_registered
         ]);
+
     }
 
     public function getTeacherImage(Request $request)
@@ -105,5 +107,5 @@ class CoursesController extends Controller
         $is_registered = $course->students->contains(auth("student")->user()->id);
         return $is_registered;
     }
-}
 
+}

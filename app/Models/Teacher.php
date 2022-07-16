@@ -8,7 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Teacher extends Authenticatable
 {
     use HasFactory;
+
     protected $guarded = "teacher";
+
     protected $fillable = [
         'email',
         'password',
@@ -42,7 +44,6 @@ class Teacher extends Authenticatable
     {
         return $this->hasMany(Course::class);
     }
-
 
     public function getGender()
     {
