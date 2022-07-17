@@ -2,13 +2,6 @@
 
 A web-based education tool that aims to make learning programming more interactive between teachers and students
 
-## Team
-
-- 120181450 - Yousef Khrais
-- 120180349 - Muhammed Al-khatib
-- 120192379 - Nadeem Alsammak
-- 120180372 - Yousef Almashharawi
-
 ## Installation Steps:
 
 Clone installation GIT repository on the master host
