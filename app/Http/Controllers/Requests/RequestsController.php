@@ -44,9 +44,9 @@ class RequestsController extends Controller
         $result = $request->save();
 
         if ($result)
-            Session::flash('alert-success', 'Successfully created course');
+            Session::flash('alert-success', 'Successfully created course request');
         else
-            Session::flash('alert-danger', 'Failed to create course');
+            Session::flash('alert-danger', 'Failed to create course request');
 
         return redirect()->back();
     }

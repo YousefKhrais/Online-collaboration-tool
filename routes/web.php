@@ -14,6 +14,7 @@ use App\Http\Controllers\Student\StudentCoursesController;
 use App\Http\Controllers\Teacher\TeacherProfileController;
 use App\Http\Controllers\Teacher\TeachersController;
 use App\Http\Controllers\Teacher\TeacherCoursesController;
+use App\Http\Controllers\Requests\RequestsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +27,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 
 Route::get('/', [HomeController::class, "index"])->name("home");
 Route::get('/about', [HomeController::class, "about"])->name("about");
@@ -108,3 +110,7 @@ Route::prefix('/room')->group(function () {
     Route::post("/teacher/joinRoom", [RoomController::class, "teacherJoinRoom"])->name("teacherJoinRoom")->middleware("auth:teacher");
 });
 
+Route::prefix('/request')->group(function () {
+    Route::get('/', [RequestsController::class, 'index'])->middleware(['auth'])->name('requests');
+    Route::post('/store', [RequestsController::class, 'store'])->name('request.store');
+});
